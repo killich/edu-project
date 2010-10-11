@@ -1,0 +1,50 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+- content_for :title do
+  Редактировать заданный вопрос
+  | Пользователь:
+  = @user.login
+    
+- content_for :navigation_menu do
+  =render :partial => "shared/navigation_menu/to_cabinet"
+
+= object_errors(@question)
+
+.edit_form.overblock
+  %h5
+    От кого:
+    = @question.from
+
+  -form_for( :question, :url=>question_path, :html=>{:method=>:put} ) do |f|
+    %label{:for=>:from}
+      От кого
+    %span
+      = f.text_field :from, :class=>:input
+      
+    %label{:for=>:to}
+      Для кого
+    %span
+      = f.text_field :to, :class=>:input
+
+    %label{:for=>:topic}
+      Тема вопроса
+    %span
+      = f.text_field :topic, :class=>:input
+
+    %label{:for=>:question}
+      Вопрос
+    %span
+      = f.text_area :question, :class=>:textarea_small
+      
+    %label{:for=>:answere}
+      Ответ
+    %span
+      = f.text_area :answere, :class=>:textarea_small
+
+    = submit_tag 'Сохранить сообщение', :class=>:submit 
+
+.edit_form.overblock 
+  -if @question.state == 'seen'
+    = button_to "Опубликовать в разделе Вопрос / Ответ", {:controller=>:questions, :action=>:publication, :id=>@question.zip}, {:method=>:put}
+  -elsif @question.state == 'publicated'
+    = button_to "Снять с публикации", {:controller=>:questions, :action=>:unpublication, :id=>@question.zip}, {:method=>:put}

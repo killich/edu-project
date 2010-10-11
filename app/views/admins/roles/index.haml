@@ -1,0 +1,60 @@
+- content_for :css do
+  =stylesheet_link_tag 'admins/style', :media=>'screen'
+  =stylesheet_link_tag 'basic/paginator', :media=>'screen'
+
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+  
+.block
+  %ul
+    %li.system
+      - text= content_tag :span, '&laquo; Назад в личный кабинет', :class=>:bar
+      = link_to text, cabinet_users_url(:subdomain=>current_user.subdomain)
+    %li.system
+      - text= content_tag :span, 'Роли', :class=>:bar
+      = link_to text,  admins_roles_path
+   
+  = will_paginate @roles
+  
+  .body
+    %h1
+      Роли
+    .admins
+      %table.listing
+        %tr
+          %th.id
+            ID
+          %th.login
+            Название
+          %th
+            Редактировать
+        -color= true
+        -for role in @roles
+          - title = role.title.blank? ? 'Нет имени' : role.title
+          -# Строчка с подсветкой
+          -if color
+            -color= !color
+            %tr
+              %td.id
+                =h role.id     
+              %td
+                = link_to title, admins_role_path(role)
+              %td
+                = link_to title, edit_admins_role_path(role)
+          -else
+            -color= !color
+            %tr.item
+              %td.id
+                =h role.id     
+              %td
+                = link_to title, admins_role_path(role)
+              %td
+                = link_to title, edit_admins_role_path(role)
+
+  %p
+    = will_paginate @roles, :class=>:pagination
+
+  %ul
+    %li.system
+      - text= content_tag :span, 'Новая Роль', :class=>:bar
+      = link_to text,  new_admins_role_path

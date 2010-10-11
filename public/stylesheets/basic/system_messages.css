@@ -1,0 +1,27 @@
+.system_messages{
+  margin:0 0 15px 0;
+}
+.system_messages li{
+  line-height:150%;
+  margin:0 0 7px 0;
+  list-style-position:inside;
+  list-style-type:disc;
+}
+.system_messages .notice{
+  background:#E0ECFF none repeat scroll 0 0;
+  border:1px solid #A5C9FF;
+  padding:10px;
+  margin:0 0 10px 0;
+}
+.system_messages .error{
+  background:#FFABAB none repeat scroll 0 0;
+  border:1px solid #F77;
+  padding:10px;
+  margin:0 0 10px 0;
+}
+.system_messages .warning{
+  background:#FFF6BF none repeat scroll 0 0;
+  border:1px solid #FFD324;
+  padding:10px;
+  margin:0 0 10px 0;
+}

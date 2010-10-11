@@ -1,0 +1,16 @@
+%h2
+  Панель администратора
+.block
+  %ul    
+    %li.system
+      - text= content_tag :span, "Личный кабинет", :class=>:bar
+      = link_to text, cabinet_users_path
+      
+    %li.system
+      - text= content_tag :span, "Пользователи", :class=>:bar
+      = link_to text, admins_users_path
+            
+    %li.system
+      - text= content_tag :span, "Роли", :class=>:bar
+      = link_to text, admins_roles_path
+  

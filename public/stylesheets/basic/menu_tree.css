@@ -1,0 +1,38 @@
+ul.menu_tree{
+	padding:0 10px 10px 10px;
+	width:205px;
+    overflow:hidden;
+    zoom:1;
+    border-right:1px solid #CCC;
+    /*background:#FFF url(/images/basic/23.jpg) no-repeat 50% 0;*/
+}
+ul.menu_tree li.root a{
+	font-weight:bold;
+}
+ul.menu_tree li{
+    padding:0;
+    float:left;
+    width:100%;
+    overflow:hidden;
+    zoom:1;
+    margin:0 0 4px 0;
+}
+ul.menu_tree ul{
+    margin:0;
+	padding-left:15px;
+}
+ul.menu_tree li a{
+	font-size:8pt;
+	font-family:Tahoma;
+	text-decoration:none;
+	background:transparent url(/images/basic/pointer.gif) no-repeat scroll 0 6px;
+	padding:0 0 0 8px;
+	display:block;
+	line-height:150%;
+}
+ul.menu_tree li a:hover{
+	background:transparent url(/images/basic/pointer_hover.gif) no-repeat scroll 0 6px;
+	text-decoration:underline;
+	color:#FF3F23;
+}
+ul.menu_tree li > ul li > ul li > ul li{margin:0;}

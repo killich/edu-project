@@ -1,0 +1,95 @@
+
+.body
+  %h1
+    Редактирование Page
+    
+  %table
+    %tr
+      %td
+        
+        -form_for(@page, :url => { :action=>'update', :controller=>'admins/pages' }) do |f|
+          = f.error_messages
+          %table.object_card
+            %tr
+              %td.field
+                ID
+              %td
+                = h @page.id
+                
+            %tr
+              %td.field
+                Владелец
+              %td
+                %span
+                  = @page.user.name
+
+            %tr
+              %td.field
+                zip-code
+              %td                  
+                %span
+                  = f.text_field :zip, :class=>:scaffold_field
+                                                                         
+            %tr
+              %td.field
+                id родителя
+              %td
+                %span
+                  = f.text_field :parent_id, :class=>:scaffold_field
+
+            %tr
+              %td.field
+                Автор страницы
+              %td                  
+                %span
+                  = f.text_field :author, :class=>:scaffold_field
+
+            %tr
+              %td.field
+                Ключевые<br />слова
+              %td                  
+                %span
+                  = f.text_field :keywords, :class=>:scaffold_field
+
+            %tr
+              %td.field
+                Авторское<br />право
+              %td
+                %span
+                  = f.text_field :copyright, :class=>:scaffold_field
+
+            %tr
+              %td.field
+                Описание
+              %td                  
+                %span
+                  = f.text_field :description, :class=>:scaffold_field
+            %tr
+              %td.field
+                Заголовок
+              %td
+                %span
+                  = f.text_field :title, :class=>:scaffold_field
+            %tr
+              %td.field
+                Аннотация
+              %td
+                .editable_text_field
+                  %span
+                    = f.text_area :annotation, :class=>:scaffold_textarea
+            %tr
+              %td.field
+                Содержимое
+              %td
+                .editable_text_field
+                  %span
+                    = f.text_area :content, :class=>:scaffold_textarea
+                                                                         
+            %tr
+              %td.field
+                Управление
+              %td
+                = f.submit "Обновить"
+                = link_to 'Показать', admins_page_path(@page)
+                = link_to 'Полный список', admins_pages_path
+                = link_to 'Сделать дочернюю страницу', new_admins_page_path(:user_id=>@page.user.id, :parent_id=>@page.id)

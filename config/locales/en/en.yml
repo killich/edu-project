@@ -1,0 +1,28 @@
+en:
+  :site_name: 'iv-schools.ru'
+  :site_description: "Ivanovo region's Internet Portal of Schools"
+
+  :system:
+    :have_no_users: 'there are no users in system'
+    :domain_does_not_exist: 'Domain does not exists.'
+    :section_not_found: 'Have no section'
+
+  :server:
+    :error: 'Server side error'
+    :data_are_required: 'need for additional data'
+
+  :flash:
+    :notice:
+      :title: 'Notice'
+      :system: 'System Notice'
+      :many_title: 'Noticies'
+    :error:
+      :title: 'Error'
+      :system: 'System Error'
+      :many_title: 'Errors'
+    :warning:
+      :title: 'Warning'
+      :system: 'System Warning'
+      :many_title: 'Warning'
+
+  :enter: 'Send'

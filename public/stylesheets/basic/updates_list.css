@@ -1,0 +1,24 @@
+/*time_list*/
+.time_list{
+  text-align:left;
+  margin: 0 0 30px 0;
+}
+.time_list th, .time_list td{
+  padding:10px;
+  vertical-align:top;
+  border-bottom:1px solid #CCC;
+  line-height:150%;
+}
+.time_list th{ font-weight:bold; }
+.time_list .name p{
+  margin:0;
+  padding-bottom:1px;
+  width:600px;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.time_list tr.even{
+  background:#F1F1F1;
+}
+.time_list .item{ background:#F9F9F9;}
+/*time_list*/

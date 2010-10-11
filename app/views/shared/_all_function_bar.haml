@@ -1,0 +1,34 @@
+-#{:style=>'display:none;'}
+.all_function_block
+  #all_function.overblock
+    %ul.overblock
+      %li
+        =link_to 'Карта сайта', '#'
+      %li
+        =link_to 'Новости', '#'
+      %li
+        =link_to 'Альбомы', '#'
+      %li
+        =link_to 'Опросы', '#'
+      %li
+        =link_to 'Форум', '#'
+      %li
+        =link_to 'Методички', '#'
+      %li
+        =link_to 'Вопрос/Ответ', '#'
+      %li
+        =link_to 'Комментарии', '#'
+      %li
+        =link_to 'Статистика', '#'
+      %li
+        =link_to 'Регистрация', '#'
+      %li
+        =link_to 'Модератор сайта', '#'
+      %li
+        =link_to 'Пользователи Портала', '#'
+  #all_function_show_link
+    =link_to_function 'Показать разделы сайта', "show_block('all_function')"
+  #all_function_hide_link{:style=>'display:none;'}
+    =link_to_function 'Скрыть разделы сайта', "hide_block('all_function')"
+  
+  

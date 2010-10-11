@@ -1,0 +1,29 @@
+en:
+  :page:
+    :field:
+      :title: 'Заголовок страницы'
+      :author: 'Автор страницы'
+      :description: 'Краткое описание страницы' 
+      :copyright: 'Авторское право' 
+      :keywords: 'Ключевые слова'
+
+    :zip_of_page: 'zip код страницы: '
+
+    :created: 'Page was created'
+    :create_child: 'Создать дочернюю страницу для страницы: '
+
+    :edit: 'Редактировать страницу: '
+    :updated: 'Page was updated'
+
+    :delete_confirm: 'Вы уверенны, что хотите удалить страницу?'
+    :delete: 'Удалить страницу: '
+    :deleted: 'page deleted'
+
+    :move_up: 'Переместить вверх страницу: '
+    :move_down: 'Переместить вниз страницу: '
+    :up: 'page moved up'
+    :down: 'page moved down'
+    
+    :has_children: 'page has a childs and can not be deleted'
+    :sub_sections_must_be_deleted: 'Для удаления страницы необходимо удалить все подразделы'
+    :cant_be_move: 'page cant be move'

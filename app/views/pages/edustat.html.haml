@@ -1,0 +1,77 @@
+!!! Strict
+%html{:xmlns=>"http://www.w3.org/1999/xhtml", 'xml:lang'=>"en", :lang=>"en"}
+  %head
+    %meta{'http-equiv'=>"content-type", :content=>"text/html; charset=utf-8"}
+    %title
+      Статистика для ivedu.ru
+    %style{:type=>'text/css'}
+      table {
+      border-collapse: collapse; /* Отображать двойные линии как одинарные */
+      }
+      th {
+      background: #ccc; /* Цвет фона */
+      text-align: left; /* Выравнивание по левому краю */
+      }
+      td, th {
+      border: 1px solid #800; /* Параметры границы */
+      padding: 4px; /* Поля в ячейках */
+      }
+      a{color:blue;}
+
+  %body
+    %table
+      %tbody
+        %tr
+          %th
+            Поддомен
+          %th
+            Самая новая страница создана
+          %th
+            Название страницы
+          %th
+            Адрес страницы
+        %tr
+          %td
+            iv36
+          %td
+            =@lc36.created_at.to_s(:db)
+          %td
+            =@lc36.title
+          %td
+            =link_to "http://iv36.iv-schools.ru/pages/#{@lc36.zip}"
+        %tr
+          %td
+            iv43
+          %td
+            =@lc43.created_at.to_s(:db)
+          %td
+            =@lc43.title
+          %td
+            =link_to "http://iv43.iv-schools.ru/pages/#{@lc43.zip}"
+        %tr
+          %th
+            Поддомен
+          %th
+            Самая новая обновленная страница
+          %th
+            Название страницы
+          %th
+            Адрес страницы
+        %tr
+          %td
+            iv36
+          %td
+            =@lu36.updated_at.to_s(:db)
+          %td
+            =@lu36.title
+          %td
+            =link_to "http://iv36.iv-schools.ru/pages/#{@lc36.zip}"
+        %tr
+          %td
+            iv43
+          %td
+            =@lu43.updated_at.to_s(:db)
+          %td
+            =@lu43.title
+          %td
+            =link_to "http://iv43.iv-schools.ru/pages/#{@lc43.zip}"

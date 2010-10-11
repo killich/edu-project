@@ -1,0 +1,36 @@
+.current_editor_bar{
+  padding:3px;
+  margin-bottom:10px;
+  background:#CBA135 url(/images/editor_arrow.gif) no-repeat scroll 100% 0;
+}
+.current_editor_bar td{
+  padding-right:10px;
+}
+.current_editor_bar a{
+  color:#FFF;
+  font-size:8pt;
+  line-height:100%;
+}
+.current_editor_bar a:hover{
+  color:#FFF;
+}
+.current_editor_bar .editor{
+  font-size:8pt;
+  margin:5px 0;
+  font-weight:bold;
+}
+
+/*current_editor_block*/
+
+.current_editor_block{
+  padding:3px;
+  margin-bottom:10px;
+  border-top:5px solid #CBA135;
+  border-bottom:5px solid #CBA135;
+}
+.current_editor_block img{margin-bottom:10px;}
+.current_editor_block .name{
+  text-align:center;
+  margin:5px 5px 15px;
+  font-weight:bold;
+}

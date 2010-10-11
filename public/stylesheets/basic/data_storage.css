@@ -1,0 +1,89 @@
+.data_storage h2{
+  color:#2476FF;
+  letter-spacing:3px;
+}
+.storage_sections{
+  margin:0 0 40px 30px;
+  font-size:15pt;
+}
+ul.storage_sections li{
+  margin:10px 0;
+}
+.data_storage table{ width:100%; border:1px solid #ddd;}
+.data_storage table td{
+  text-align:left;
+   border-right:1px solid #ddd;
+   border-bottom:1px solid #ddd;
+   white-space:nowrap;
+   padding:5px;
+   padding-right:15px;
+   line-height:140%;
+   cursor:pointer;
+}
+.data_storage .tab_title{
+  color:#F00;
+}
+.data_storage table td.descriptor{
+  white-space:normal;
+}
+.state{background:#FFF;}
+.marked{background:#EEF;}
+
+/*file storage*/
+.file_header{
+  margin:0 0 10px 0;
+  font-size:13pt;
+}
+.file_block{
+  margin:0 0 5px 0;
+  font-size:13pt;
+}
+.file_block b{
+  line-height:110%;
+  font-size:8pt;
+}
+.file_block input{
+  font-size:8pt;
+  border:1px solid #DDD;
+}
+.gallery{
+    border:3px solid #000;
+    display:block;
+    position:relative;
+    overflow:hidden;
+    zoom:1;
+}
+.gallery:hover{
+    border:3px solid #2476FF;
+}
+.gallery .zoom{
+    display:block;
+    position:absolute;
+    border-top:2px solid #000;
+    border-left:2px solid #000;
+    top:76px;
+    left:76px;
+    width:24px;
+    height:24px;
+    background:#FFF url(/images/iconza/red/zoom.png) no-repeat scroll 0 0;
+}
+.trash{
+    margin-top:35px;
+    overflow:hidden;
+    zoom:1;
+}
+.file_delete{
+    float:right;
+    display:block;
+    width:24px;
+    height:24px;
+    border:2px solid #FCC;
+    background:#FFF url(/images/iconza/red/trash.png) no-repeat scroll center center;
+}
+.file_delete:hover{
+    border:2px solid #F00;
+}
+/*file storage*/
+.file_block p{
+  margin-bottom:5px;
+}

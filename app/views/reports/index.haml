@@ -1,0 +1,56 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/paginator', :media=>'screen'
+  =stylesheet_link_tag 'basic/time_list.css', :media=>'screen'
+  =stylesheet_link_tag 'basic/admin_map.css', :media=>'screen'
+  
+-if flash[:notice]
+  .notice
+    = flash[:notice]
+
+-if flash[:error]
+  .error
+    = flash[:error]
+
+=# will_paginate @reports
+
+%h1
+  Список Новостей
+.admin_map
+  = manager_pages_tree!(@reports)
+    
+%br
+%br
+
+      
+%table.time_list
+  %tbody
+    %tr
+      %th
+        Заголовок
+      %th
+        Управление
+    -#                        
+      -for report in @reports
+        %tr
+          %td.name
+            %p
+              = link_to report.title, report_path(report.zip)
+          %td
+            = report.updated_at.strftime("%d/%m/%y %H:%M")
+            = link_to '[e]', edit_report_path(report)
+            |
+            = link_to '[x]', report_path(report), :confirm => 'Вы уверены?', :method => :delete
+            =#h report.id  
+            =#h report.user_id
+            =#h report.display_state  
+            =#h report.description  
+            =#h report.content  
+            =#h report.prepared_content
+            =#h report.settings
+
+%br
+=# will_paginate @reports
+
+%br
+%br
+= link_to 'Создать Новость', new_report_path

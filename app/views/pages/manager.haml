@@ -1,0 +1,15 @@
+- content_for :navigation_menu do
+  =render :partial => "shared/navigation_menu/to_cabinet"
+- content_for :css do
+  =stylesheet_link_tag 'basic/admin_map.css', :media=>'screen'
+- content_for :title do
+  Управление страницами сайта:
+  = "#{@user.login}.iv-schools.ru"
+  |
+  =t('portal_name')
+      
+%h5 Управление страницами сайта
+.admin_map
+  = manager_pages_tree!(@pages_tree)
+  .div{:style=>'margin:25px 0 0 0;'}
+    = link_to image_tag('iconza/blue/add.png', :style=>'vertical-align:middle;')+' Создать корневую страницу', new_page_path, :style=>'font-weight:bold;'

@@ -1,0 +1,61 @@
+%h5
+  Регистрация новых пользователей
+  %br
+  в период тестирования невозможна
+      
+-#
+  = object_errors(@user)
+
+  .std_form
+    %h3
+      Регистрация нового пользователя
+    %p
+      Данная форма позволяет зарегистрировать в системе нового пользователя.
+    %p
+      Пожалуйста, максимально аккуратно заполните поля формы. Ваши данные будут проверены и
+      после этого на указанный Вами ящик электронной почты придет секретный код активации Вашей
+      учетной записи
+    %p.red
+      Все поля обязательны для заполнения
+      
+    -form_for :user, :url => users_path do |f|
+      %label{:for=>:login}
+        Логин
+        %strong
+          (имя в системе)
+      %span
+        = f.text_field :login, :class=>:input
+      %p
+        Логин &mdash; это ваш псеводоним в системе iv-schools.ru      
+        
+      %label{:for=>:email}
+        Email
+        %strong
+          (адрес электронной почты)
+      %span    
+        = f.text_field :email, :class=>:input
+      %p
+        Email &mdash; это ваш адрес электронной почты
+
+      %label{:for=>:password}
+        Пароль
+      %span
+        = f.password_field :password, :class=>:input
+      %p
+        Пароль для доступа в систему 
+
+      %label{:for=>:password_confirmation}
+        Подтвердить пароль
+      %span
+        = f.password_field :password_confirmation, :class=>:input
+      %p
+        Нужно убедиться, что вы не ошиблись
+        
+      %label{:for=>:additional_info}
+        Расскажите о себе
+      %span
+        = text_area_tag :additional_info, '', :class=>:textarea_mid
+      %p
+        Расскажите о себе
+
+      = submit_tag 'Зарегистрироваться', :class=>:submit

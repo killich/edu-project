@@ -1,0 +1,123 @@
+
+.body
+  -if flash[:notice]
+    .notice
+      = flash[:notice]
+
+  -if flash[:error]
+    .error
+      = flash[:error]
+
+  %h1
+    Список объектов Pages 
+    = link_to "Весь список", admins_pages_path
+
+  %br
+  = link_to 'Новый объект Page', new_admins_page_path
+  %br
+  %br
+  = will_paginate @pages, :class=>:scaffold_pagination, :previous_label=>"&larr;", :next_label=>"&rarr;"
+
+
+  %table
+    %tr
+    
+      %td
+      
+        ID
+          
+      %td
+      
+        Владелец
+          
+      %td
+      
+        zip-code
+          
+      %td
+      
+        Автор страницы
+          
+      %td
+      
+        Ключевые<br />слова
+          
+      %td
+      
+        Авторское<br />право
+          
+      %td
+      
+        Описание
+          
+      %td
+      
+        Заголовок
+          
+      %td
+      
+        Аннотация
+          
+      %td
+      
+        Содержимое
+              
+
+      %td
+        Управление
+        
+    -for page in @pages
+      %tr
+      
+        %td
+        
+          =h page.id  
+              
+        %td
+        
+          =h page.user.name
+              
+        %td
+        
+          =h page.zip  
+              
+        %td
+        
+          =h page.author  
+              
+        %td
+        
+          =h page.keywords  
+              
+        %td
+        
+          =h page.copyright  
+              
+        %td
+        
+          =h page.description  
+              
+        %td
+        
+          =h page.title  
+              
+        %td
+        
+          =h page.annotation  
+              
+        %td
+        
+          =h page.content.chars[0..700]
+              
+        %td
+          %div{:style=>"height:25px;"}
+            = link_to 'Показать', admins_page_path(page)
+          %div{:style=>"height:25px;"}
+            = link_to 'Редактировать', edit_admins_page_path(page)
+          %div{:style=>"height:25px;"}
+            = link_to 'Удалить', admins_page_path(page), :confirm => 'Вы уверены?', :method => :delete
+
+
+
+  %br
+  = will_paginate @pages, :class=>:scaffold_pagination, :previous_label=>"&larr;", :next_label=>"&rarr;"

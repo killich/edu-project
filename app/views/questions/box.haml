@@ -1,0 +1,51 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/comment.css', :media=>'screen'
+  =stylesheet_link_tag 'basic/paginator', :media=>'screen'
+  - content_for :title do
+    Список всех входящих вопросов для пользователя:
+    =@user.login
+    |
+    =t('portal_name')
+- content_for :navigation_menu do
+  =render :partial => "shared/navigation_menu/to_cabinet"
+
+= will_paginate @questions
+          
+- @questions.each do |q|
+  -color_set= {:new_question=>'#BBD653', :seen=>'#CCC', :publicated=>'#00F', :blocked=>'#EC008B', :deleted=>'#E03D64'}
+  -color_set_names= {:new_question=>'новый', :seen=>'просмотрен', :publicated=>'опубликован', :blocked=>'блокирован', :deleted=>'удален'}
+
+  -color= color_set[q.state.to_sym]
+  .comment.overblock{:style=>"border:1px solid #{color};"}
+    %b{:style=>"color: #{color};"}
+      Статус:
+      =color_set_names[q.state.to_sym]
+    %br
+    %b
+      От кого
+    =q.from.mb_chars[0..30]
+    %br
+    %b
+      Кому:
+    =q.to.mb_chars[0..30]
+    %br
+    %b
+      Тема:
+    =q.topic.mb_chars[0..30]
+    
+    .controls
+      = link_to 'Просмотр', edit_question_path(q.zip)
+      = link_to 'Удалить', q.zip, :method=>:delete, :confirm=>'Вы уверенны, что хотите удалить этот вопрос безвозвратно?'
+      
+      - if logged_in?
+        -# Если есть ролевой доступ к администрированию вопросов
+        - if current_user.has_role_policy?(:administrator, :questions)
+          = link_to 'Удалить физически', physic_delete_question_path(q.zip), :method=>:delete, :confirm=>'Вы уверенны, что хотите удалить этот вопрос безвозвратно (физическое удаление)?'
+
+= will_paginate @questions  
+
+  
+  
+  
+  
+  

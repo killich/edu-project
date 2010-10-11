@@ -1,0 +1,53 @@
+.comment{
+  line-height:180%;
+  border:1px solid #CCC;
+  padding:10px;
+  margin-bottom:10px;
+  position:relative;
+  zoom:1.0;
+  z-index:1;
+  font-size:9pt;
+}
+.comment b{line-height:180%;}
+.comment .number{
+  position:absolute;
+  top:5px;
+  right:5px;
+  font-family:Trebuchet MS,Tahoma,Arial,Verdana,serif;
+  font-size:40pt;
+  color:#DDD;
+  z-index:-1;
+}
+.comment .info{
+  margin-bottom:10px;
+}
+.comment .info a{
+  margin-right:10px;
+  color:#2476FF;
+  font-size:12pt;
+  font-weight:bold;
+}
+.comment .info a:hover{
+  color:#FF7211;
+}
+.comment .info .date{
+  color:#AAA;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+.comment .controls{
+  margin-top:10px;
+}
+.comment .controls a{
+  margin-right:10px;
+  color:#888;
+}
+.comment .controls a:hover{
+  color:#F44;
+}
+.comment .deleted{
+  color:#2476FF;
+  font-size:12pt;
+  font-weight:bold;
+  height:50px;
+}

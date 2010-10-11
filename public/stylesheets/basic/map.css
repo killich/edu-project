@@ -1,0 +1,26 @@
+.map, .admin_map{ margin:0 0 15px 0; }
+.map a, .admin_map a{
+  color:#000;
+  font-size:8pt;
+  font-weight:normal;
+  text-decoration:none;
+  line-height: 150%;
+}
+.map .root a, .admin_map .root a{ font-weight:bold; }
+.map a:hover{
+  color:#2476FF;
+  text-decoration:none;
+}
+.map ul ul{
+  border-left:1px dashed #DDDDDD;
+  list-style-image:none;
+  list-style-position:inside;
+  list-style-type:circle;
+  -list-style-type:none;
+  -list-style-type:none;
+  margin:0 0 0 1px;
+}
+.map ul li{
+  zoom:1;
+  padding:3px 0 3px 12px;
+}

@@ -1,0 +1,27 @@
+- content_for :navigation_menu do
+  =render :partial => "shared/navigation_menu/pages/new"
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+  =stylesheet_link_tag 'basic/page_preview.css', :media=>'screen'
+- content_for :js do
+  =javascript_include_tag "js/editor"
+- content_for :title do
+  Создание новой страницы для:
+  =@user.login
+  |
+  =t('portal_name')
+
+= object_errors(@page)
+
+.edit_form
+  %h5
+    Создать новую страницу
+  - if @parent
+    %h5.gray
+      Данная страница будет являться дочерней по отношению к странице:
+    %h5.gray
+      = @parent.title
+
+  -form_for :page, :url => pages_path do |f|
+    =hidden_field_tag :parent_id, @parent.zip if @parent
+    =render :partial => 'form', :locals => {:f => f, :button=>'Создать страницу', :title=>'Название страницы'}

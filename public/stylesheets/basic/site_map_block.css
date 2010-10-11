@@ -1,0 +1,17 @@
+#site_map_block{
+    padding:3px;
+    border:5px solid #CBA135;
+    margin-bottom:15px;
+}
+#site_map_block a{
+    color:#2476FF;
+}
+#site_map_block ul{
+    margin:5px 5px 2px 5px;
+    padding:0;
+}
+#site_map_block ul li{
+    -float:left;
+    -width:99%;
+    margin-bottom:5px;
+}

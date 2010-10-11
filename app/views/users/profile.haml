@@ -1,0 +1,153 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+
+- content_for :title do
+  Анкетный данные пользователя
+  |
+  =t('portal_name')
+      
+%h3=t('profile')
+
+.block
+  %ul
+    %li.system
+      - text= content_tag :span, '&laquo; Назад в личный кабинет', :class=>:bar
+      = link_to text, cabinet_users_url(:subdomain=>current_user.subdomain)
+      
+=object_errors(@user)
+      
+.edit_form.overblock
+  %h5
+    Мое имя:
+  -form_for(:user, @user ,:url=>name_profile_path(@user), :html=>{:method=>:put}) do |f|
+    %span
+      = f.text_field :name, :class=>:input
+    
+    = submit_tag 'Обновить', :class=>:submit
+
+.edit_form
+  %h5
+    Фотография:
+  -form_for :user, :url => avatar_profile_path(@user), :html => { :multipart => true, :method=>:put } do |form|
+    =form.file_field :avatar
+    =submit_tag 'Установить', :class=>:submit
+
+
+
+.edit_form
+  %h5
+    Анкетные данные:
+  -form_for(:profile, :url=>profile_path(@profile), :html=>{:method=>:put}) do |f|
+    %label{:for=>:native_town}
+      Сейчас Вы можете указать имя человека, который занимается наполнением школьного сайта
+      и загрузить его фотографию.
+      %br
+      Позже функционал будет увеличен.
+    -#
+      %label{:for=>:native_town}
+        Родной город
+      %span
+        = f.text_field :native_town, :class=>:input
+        
+      %label{:for=>:study_town}
+        Учусь в городе
+      %span
+        = f.text_field :study_town, :class=>:input
+        
+      %label{:for=>:study_place}
+        Мое учебное заведение
+      %span
+        = f.text_field :study_place, :class=>:input
+        
+      %label{:for=>:study_status}
+        В учебном заведении я являюсь
+      %span
+        = f.text_field :study_status, :class=>:input
+        
+      %label{:for=>:work_town}
+        Работаю в городе
+      %span
+        = f.text_field :work_town, :class=>:input
+        
+      %label{:for=>:work_place}
+        Место моей работы
+      %span
+        = f.text_field :work_place, :class=>:input
+        
+      %label{:for=>:work_status}
+        Работаю на должности
+      %span
+        = f.text_field :work_status, :class=>:input      
+        
+      %label{:for=>:home_phone}
+        Домашний телефон
+      %span
+        = f.text_field :home_phone, :class=>:input
+        
+      %label{:for=>:cell_phone}
+        Мобильный телефон
+      %span
+        = f.text_field :cell_phone, :class=>:input
+        
+      %label{:for=>:icq}
+        ICQ номер
+      %span
+        = f.text_field :icq, :class=>:input
+        
+      %label{:for=>:jabber}
+        JABBER номер
+      %span
+        = f.text_field :jabber, :class=>:input
+        
+      %label{:for=>:public_email}
+        Открытый email
+      %span
+        = f.text_field :public_email, :class=>:input
+        
+      %label{:for=>:web_site}
+        Мой личный сайт
+      %span
+        = f.text_field :web_site, :class=>:input
+
+      %label{:for=>:activity}
+        Деятельность
+      %span
+        = f.text_area :activity, :class=>:textarea_small
+        
+      %label{:for=>:interests}
+        Мои интересы
+      %span
+        = f.text_area :interests, :class=>:textarea_small
+        
+      %label{:for=>:music}
+        Моя музыка
+      %span
+        = f.text_area :music, :class=>:textarea_small
+        
+      %label{:for=>:movies}
+        Мои фильмы
+      %span
+        = f.text_area :movies, :class=>:textarea_small
+        
+      %label{:for=>:tv}
+        Телевиденье
+      %span
+        = f.text_area :tv, :class=>:textarea_small
+        
+      %label{:for=>:books}
+        Мои книги
+      %span
+        = f.text_area :books, :class=>:textarea_small
+        
+      %label{:for=>:citation}
+        Любимые цитаты
+      %span
+        = f.text_area :citation, :class=>:textarea_small
+        
+      %label{:for=>:about_myself}
+        О себе
+      %span
+        = f.text_area :about_myself, :class=>:textarea_small
+        
+   	
+      = submit_tag 'Обновить', :class=>:submit

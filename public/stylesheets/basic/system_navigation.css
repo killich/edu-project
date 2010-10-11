@@ -1,0 +1,26 @@
+ul.system_navigation{
+  overflow:hidden;
+  zoom:1;
+  height:30px;
+  border-bottom:1px solid #EEE;
+  text-align:center;
+}
+.system_navigation li{
+  height:20px;
+  display:inline;
+  margin:0 10px;
+  padding:5px 15px;
+  text-align:left;
+}
+.system_navigation li:hover{
+  background:#EEE;
+}
+.system_navigation li a{
+  font-size:9pt;
+  line-height:150%;
+  color:#2476FF;
+  font-weight:bold;
+}
+.system_navigation li a:hover{
+  color:#FF7211;
+}

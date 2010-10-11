@@ -1,0 +1,23 @@
+h1,h2,h3,h4,h5,h6 {font-weight:bold; margin-bottom:20px; line-height:120%; border-bottom:1px solid #EEE;}
+h1{ font-size:22pt; }
+h2{ font-size:20pt; }
+h3{ font-size:18pt; }
+h4{ font-size:16pt; }
+h5{ font-size:14pt; }
+h6{ font-size:12pt; }
+
+h3 a{color:#000; text-decoration:none;}
+h3 a:hover{color:#2476FF;}
+
+.header{
+  margin-top:10px;
+  margin-bottom:10px;
+  text-align:center;
+  color:#2476FF;
+  font-size:28pt;
+  padding-top:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid #EEE;
+}
+.header a{text-decoration:none;}
+.header a:hover{text-decoration:underline;}

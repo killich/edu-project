@@ -1,0 +1,16 @@
+%label{:for=>:title}
+  Имя (En)
+%span
+  = f.text_field :name, :class=>:input        
+
+%label{:for=>:title}
+  Название
+%span
+  = f.text_field :title, :class=>:input
+  
+%label{:for=>:content}
+  Описание
+%span
+  = f.text_area :description, :class=>:textarea_small 
+  
+= submit_tag button, :class=>:submit

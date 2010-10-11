@@ -1,0 +1,36 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+  
+.block
+  %ul
+    %li.system
+      - text= content_tag :span, '&laquo; Назад в личный кабинет', :class=>:bar
+      = link_to text, cabinet_users_url(:subdomain=>current_user.subdomain)
+    %li.system
+      - text= content_tag :span, 'Роли', :class=>:bar
+      = link_to text,  admins_roles_path
+  
+  = object_errors(@role)
+  
+  .edit_form.overblock
+    %h5
+      Просмотр роли
+    -form_for(@role, :url => admins_roles_path) do |f|
+      %label{:for=>:title}
+        Имя (En)
+      %span
+        = f.text_field :name, :class=>:input        
+
+      %label{:for=>:title}
+        Название
+      %span
+        = f.text_field :title, :class=>:input
+        
+      %label{:for=>:content}
+        Описание
+      %span
+        = f.text_area :description, :class=>:textarea_small  
+      %label{:for=>:settings}
+        Настройки роли
+      %span
+        = f.text_area :settings, :class=>:textarea_mid

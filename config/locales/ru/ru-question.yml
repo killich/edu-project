@@ -1,0 +1,11 @@
+ru:
+  :question:
+    :field:
+      :state: 'Состояние'
+      :from: 'От кого'
+      :to: 'Для кого'
+      :topic: 'Тема'
+      :question: 'Вопрос'
+      :captcha: 'Секретный код'
+
+    :zip_of_page: 'zip код вопроса: '

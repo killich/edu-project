@@ -1,0 +1,33 @@
+ru:
+  :site_name: 'iv-schools.ru'
+  :site_description: 'iv-schools.ru &mdash; Ивановский Региональный Школьный Интернет Портал'
+
+  :system:
+    :have_no_users: 'В системе нет ни одного пользователя'
+    :domain_does_not_exist: 'Домен не существует'
+    :section_not_found: 'Нет запрошенного раздела'
+
+  :server:
+    :error: 'Ошибка стороны сервера'
+    :data_are_required: 'Для выполнения действия требуются дополнительные данные'
+
+  :flash:
+    :notice:
+      :title: 'Уведомление'
+      :system: 'Системное уведомление'
+      :many_title: 'Уведомления'
+    :error:
+      :title: 'Ошибка'
+      :system: 'Системная ошибка'
+      :many_title: 'Ошибки'
+    :warning:
+      :title: 'Предупреждение'
+      :system: 'Системное предупреждение'
+      :many_title: 'Предупреждения'
+
+  :paperclip:
+    :avatar:
+      :errors:
+        :size: "не подходящий размер изображения (от 10 до 200 килобайт)"
+        :content_type: "должен быть JPG или GIF изображением"
+        :presence: "не может быть пустым"

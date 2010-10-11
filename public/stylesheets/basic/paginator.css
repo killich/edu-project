@@ -1,0 +1,22 @@
+/*Илья Зыкин*/
+.pagination {
+  background: #F1F1F1;
+  border: 1px solid #CCC;
+  text-align:center;
+  padding:10px;
+  margin-bottom:10px;
+  font-size:10pt;
+  overflow:hidden;
+  zoom:1;
+}
+.pagination a, .pagination span{
+  padding-left:5px;
+  padding-right:5px;
+}
+.pagination span.disabled {color: #AAA; }
+.pagination span.current{
+  font-weight: bold;
+  background: transparent url(/images/basic/paginator-circle.gif) no-repeat 50% 50%;
+}
+.pagination a {text-decoration: none; color:#000; }
+.pagination a:hover, .pagination a:focus {text-decoration: underline; color:#44F; }

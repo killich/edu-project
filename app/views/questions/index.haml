@@ -1,0 +1,111 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/comment.css', :media=>'screen'
+  =stylesheet_link_tag 'basic/paginator', :media=>'screen'
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+- content_for :title do
+  Оставить вопрос для сайта 
+  =" &raquo; #{@user.login}.iv-schools.ru"
+  |
+  =t('portal_name')
+
+= object_errors(@question)
+
+#question_shower{:style=>'border:3px solid #FCC; padding:10px; margin:0 0 10px 0;'}
+  =link_to_function 'Задать вопрос прямо сейчас!', "show_question_form()"
+
+#question_block{:style=>'display:none;'}
+  .edit_form
+    %h5
+      Задать вопрос
+      
+    -form_for :question, :url => questions_path do |f|
+      %fieldset
+        %label{:for=>:from}
+          От кого
+        %span
+          = f.text_field :from, :class=>:input, :id=>:from
+          
+        %label{:for=>:for}
+          Для кого
+        %span
+          = f.text_field :to, :class=>:input, :id=>:for
+          
+        %label{:for=>:topic}
+          Тема вопроса
+        %span
+          = f.text_field :topic, :class=>:input, :id=>:topic
+          
+        %label{:for=>:question}
+          Ваш вопрос (не более 600 символов)
+        %span
+          = f.text_area :question, :class=>:textarea_small, :id=>:question
+
+        %label{:for=>:website}
+          Сюда Вы можете вписать имя своего сайта
+        %span
+          = f.text_field :website, :class=>:input, :id=>:website
+          
+        %label{:for=>:email}
+          Укажите электронную почту и мы будем знать как с вами связаться
+        %span
+          = f.text_field :email, :class=>:input, :id=>:email
+      
+        = hidden_field_tag :captcher_code, @question.user.zip
+
+        %p{:style=>'padding-top:10px;'}
+          Вредные рекламные программы никогда не введут в это поле
+          %br
+          символы с картинки
+        %span
+          = show_simple_captcha(:object=>:question, :distortion=>'medium', :image_style=>['embosed_silver', 'simply_red', 'distorted_black', 'charcoal_grey'].rand)
+        %p{:style=>'padding-top:10px;'}
+          = submit_tag 'Задать вопрос', :class=>:submit
+    =link_to_function 'Спрятать эту форму', "hide_question_form()"
+
+= will_paginate @questions
+          
+- if @questions.empty?
+  %br
+  %br
+  %br
+  %h4
+    К сожалению, опубликованных ответов на заданные вопросы еще нет
+- @questions.each do |q|
+  .comment
+    .info
+      .date
+        =q.created_at.to_s(:db).split(' ').first    
+    %b
+      От кого:
+    =q.from
+    
+    %br
+    
+    %b
+      Кому:
+    =q.to
+    
+    %br    
+    
+    %b
+      Тема:
+    =q.topic
+    
+    %br    
+    
+    %b
+      Вопрос:
+    =q.question
+    %br
+    %p{:style=>'background:#EEE; padding:5px; margin-top:5px;'}
+      %b
+        Ответ:
+      =q.answere
+
+= will_paginate @questions  
+
+  
+  
+  
+  
+  

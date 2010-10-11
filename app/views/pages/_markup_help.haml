@@ -1,0 +1,260 @@
+#markup_man
+  %p
+    <span class="red">Все символы разметки (p, h1, h2, h3, h4 и т.д.) набраны латиницей<br />
+    Не оставляйте между левым краем поля &quot;Содержимое страницы&quot; и символом разметки пробелы.</span>
+  
+  %table.help_content{:style=>'width:90%;'}
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Заголовки
+        %br
+        1-6 уровни
+        %span.nobr
+          (h1, h2, h3 ...)
+      %td
+        <span class="red">h4.</span> Лермонтов
+      %td
+        <h4>Лермонтов</h4>
+        
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Параграф (абзац)
+      %td
+        Михаил Юрьевич Лермонтов, великий русский поэт, прозаик и драматург, родился в Москве, в дворянской семье.
+        %br
+        %br
+        Детство поэта прошло в Тарханах - имении его бабушки в Пензенской губернии.
+      %td
+        Михаил Юрьевич Лермонтов, великий русский поэт, прозаик и драматург, родился в Москве, в дворянской семье.
+        %br
+        %br
+        Детство поэта прошло в Тарханах - имении его бабушки в Пензенской губернии.
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Параграф (вариант 2)
+      %td
+        %span.red
+          p. 
+        Михаил Юрьевич Лермонтов, великий русский поэт, прозаик и драматург, родился в Москве, в дворянской семье.
+        %br
+        %br
+        %span.red
+          p.
+        Детство поэта прошло в Тарханах - имении его бабушки в Пензенской губернии.
+      %td
+        Михаил Юрьевич Лермонтов, великий русский поэт, прозаик и драматург, родился в Москве, в дворянской семье.
+        %br
+        %br
+        Детство поэта прошло в Тарханах - имении его бабушки в Пензенской губернии.
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Жирный шрифт
+      %td
+        <span class="red">*</span>Лермонтов<span class="red">*</span>
+        &mdash; великий русский поэт, прозаик и драматург.
+      %td
+        <b>Лермонтов</b>
+        &mdash; великий русский поэт, прозаик и драматург.
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Курсив
+      %td
+        <span class="red">_</span>Лермонтов<span class="red">_</span>
+        &mdash; великий русский поэт, прозаик и драматург.
+      %td
+        <i>Лермонтов</i>
+        &mdash; великий русский поэт, прозаик и драматург.
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Выравнивание по центру
+      %td
+        %b
+          Символ
+        <span class="red">=</span>
+        %b
+          в сочитании с другим элементом
+        %br
+        %br
+        <span class="red">p=.</span> Лермонтов
+        &mdash; великий русский поэт, прозаик и драматург.
+        %br
+        %br
+        <span class="red">h5=.</span> Лермонтов
+      %td
+        <p style="color:#000; text-align: center;">Лермонтов &mdash; великий русский поэт, прозаик и драматург.</p>
+        <h5 style="color:#000; text-align: center;">Лермонтов</h5>
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Выравнивание по правому краю
+      %td
+        %b
+          Символ
+        <span class="red">&gt;</span>
+        %b
+          в сочитании с другим элементом
+        %br
+        %br
+        <span class="red">p&gt;.</span> Лермонтов
+        &mdash; великий русский поэт, прозаик и драматург.
+        %br
+        %br
+        <span class="red">h5&gt;.</span> Лермонтов
+      %td
+        <p style="color:#000; text-align: right;">Лермонтов &mdash; великий русский поэт, прозаик и драматург.</p>
+        <h5 style="color:#000; text-align: right;">Лермонтов</h5>
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Картинка
+        %br
+        %br
+        <span class="green">Коды для вставки ищите в файловом хранилище</span>
+      %td
+        %b
+          <span class="red">!</span>Адрес<span class="red">(</span>Описание<span class="red">)</span><span class="red">!</span>
+        %br
+        %br
+        %b
+          <span class="red">!</span>http://iv-schools.ru/images/basic/mff.jpg<span class="red">(</span>Логотип FireFox<span class="red">)</span><span class="red">!</span>
+      %td
+        <img alt="Логотип FireFox" src="http://iv-schools.ru/images/basic/mff.jpg" title="Логотип FireFox" />
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Картинка по центру
+        %br
+        %br
+        <span class="green">Комбинация 2х элементов</span>
+        <span class="green">(картинка в абзаце с выравниванием)</span>
+      %td
+        %b
+          <span class="red">p=.</span> <span class="red">!</span>Адрес<span class="red">(</span>Описание<span class="red">)</span><span class="red">!</span>
+        %br
+        %br
+        %b
+          <span class="red">p=.</span>  <span class="red">!</span>http://iv-schools.ru/images/basic/mff.jpg<span class="red">(</span>FireFox<span class="red">)</span><span class="red">!</span>
+      %td
+        <p style="text-align: center;"><img alt="FireFox" src="http://iv-schools.ru/images/basic/mff.jpg" title="FireFox" /></p>
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Ссылка на сайт (файл)
+        %br
+        %br
+        <span class="green">Коды для вставки ищите в файловом хранилище</span>
+      %td
+        %b
+          <span class="red">&quot;</span>Название<span class="red">&quot;</span><span class="red">:</span>Адрес
+        %br
+        %br
+        %b
+          <span class="red">&quot;</span>Департамент образования Ивановской области<span class="red">&quot;:</span>http://www.iv-edu.ru
+      %td
+        <a href="http://www.iv-edu.ru">Департамент образования Ивановской области</a>
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Маркированный список
+      %td
+        * Иванов<br />* Георгадзе<br />* Абрамович<br />* Гейтс
+      %td
+        <ul style="list-style:disc inside none;"><li>Иванов</li><li>Георгадзе</li><li>Абрамович</li><li>Гейтс</li></ul>
+    -# Элемент
+    %tr
+      %th.name
+        Элемент
+      %th
+        Пример
+      %th
+        Результат
+    %tr
+      %td.name
+        Нумерованный список
+      %td
+        &nbsp;# Иванов<br />&nbsp;# Георгадзе<br />&nbsp;# Абрамович<br />&nbsp;# Гейтс
+      %td
+        <ol style="list-style:decimal inside none;"><li>Иванов</li><li>Георгадзе</li><li>Абрамович</li><li>Гейтс</li></ol>

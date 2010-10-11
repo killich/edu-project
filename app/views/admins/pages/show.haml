@@ -1,0 +1,118 @@
+
+.body
+  %h1
+    Объект
+    = "Page"
+    = "#"+@page.id.to_s
+    
+  -if flash[:notice]
+    .notice
+      = flash[:notice]
+
+  -if flash[:error]
+    .error
+      = flash[:error]
+
+  %table
+    %tr
+      %td
+        %table.object_card
+        
+        
+          
+          %tr
+            %td.field
+              ID
+            %td
+            
+              =h @page.id
+                                     
+        
+          
+          %tr
+            %td.field
+              Владелец
+            %td
+            
+              =h @page.user_id
+                                     
+        
+          
+          %tr
+            %td.field
+              zip
+            %td
+            
+              =h @page.zip
+                                     
+        
+          
+          %tr
+            %td.field
+              Автор страницы
+            %td
+            
+              =h @page.author
+                                     
+        
+          
+          %tr
+            %td.field
+              Ключевые<br />слова
+            %td
+            
+              =h @page.keywords
+                                     
+        
+          
+          %tr
+            %td.field
+              Авторское<br />право
+            %td
+            
+              =h @page.copyright
+                                     
+        
+          
+          %tr
+            %td.field
+              Описание
+            %td
+            
+              =h @page.description
+                                     
+        
+          
+          %tr
+            %td.field
+              Заголовок
+            %td
+            
+              =h @page.title
+                                     
+        
+          
+          %tr
+            %td.field
+              Аннотация
+            %td
+            
+              .readeble_text_field
+                =(h @page.annotation).gsub("\n", "<br />")
+                                     
+        
+          
+          %tr
+            %td.field
+              Содержимое
+            %td
+            
+              .readeble_text_field
+                =(h @page.content).gsub("\n", "<br />")
+                                     
+          %tr
+            %td.field
+              Управление
+            %td
+              = link_to 'Редактировать', edit_admins_page_path(@page)
+              = link_to 'Полный список', admins_pages_path

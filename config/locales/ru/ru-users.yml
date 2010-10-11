@@ -1,0 +1,16 @@
+ru:
+  :user:
+    :field:
+      :password: 'Пароль'
+      :password_confirmation: 'Подтверждение пароля'
+      :login: 'Логин (имя учетной записи)'
+      :email: 'Email (ваш адрес электронной почты)'
+      :avatar: 'Аватар'
+
+    :auth:
+      :updated: "Спасибо за регистрацию в системе iv-schools.ru"
+      :created: "Создан новый пользователь в системе iv-schools.ru"
+      :cant_be_create: 'Не удалось создать пользователя'
+      :entered: "Выполнен вход в систему iv-schools.ru"
+      :logouted: "Выход из системы iv-schools.ru успешно выполнен"
+      :enter_error: "Ошибка входа в систему iv-schools.ru. Возможно Логин или Пароль указаны не верно"

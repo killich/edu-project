@@ -1,0 +1,15 @@
+!!! Strict
+%html{:xmlns=>"http://www.w3.org/1999/xhtml", 'xml:lang'=>"en", :lang=>"en"}
+  %head
+    %meta{'http-equiv'=>"content-type", :content=>"text/html; charset=utf-8"}
+    %link{:href=>"favicon.ico", :rel=>"shortcut icon"}
+    %title
+      Killich's HAML Scaffolds
+    
+    =stylesheet_link_tag 'haml_scaffolds/reset', :media=>'screen'
+    =stylesheet_link_tag 'haml_scaffolds/style', :media=>'screen'
+    
+    =#javascript_include_tag "somejs"
+    =#javascript_include_tag :defaults
+  %body      
+    =yield

@@ -1,0 +1,36 @@
+/*
+  killich's design
+  killich@yandex.ru
+  Илья Зыкин
+
+  A2B3D3 серо-синий
+  2476FF голубой
+  16181D черный
+  F9F9F9 еле заметный серо-синий
+  CCCCCC серый
+  DCDCDC светлосерый
+  C2E5EA морская волна
+  FF7211 оранжевый
+  FFABAB сетло красный
+  A5C9FF светло голубой
+  E0ECFF еле заметная морская волна
+*/
+.admins .listing{
+  width:99%;
+}
+.admins .listing th{
+  font-weight: bold;
+  text-align: left;
+}
+.admins .listing th, .admins .listing td{
+  border-bottom:1px solid #CCC;
+  height:40px;
+  vertical-align:middle;
+}
+.admins .listing tr.item{
+  background:#F9F9F9;
+}
+.admins .listing .id{width:5%; padding-left:3px;}
+.admins .listing .login{width:20%;}
+.admins .listing .name{}
+.admins .listing .email{width:25%;}

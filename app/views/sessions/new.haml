@@ -1,0 +1,42 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/std_form.css', :media=>'screen'
+- content_for :title do
+  Вход в систему:
+  =t('portal_name')
+  
+%div{:style=>'border:2px solid #FCC;padding:10px; margin:10px 0;line-height:150%;'}
+  Уважаемые пользователи!
+  %br
+  В качестве Логина используйте имя раздела, внутри которого находится ваш сайт.
+  %br
+  Например: <b>iv36, iv43, kohma5, kohma6, kohma7 или kohma5vecher</b><br />
+  <b style="color:#F00;">Пароли доступа к сайтам остались прежними</b>
+.std_form
+  %h3
+    =t('text.sessions.new.wellcome')
+  %p
+    =t('text.sessions.new.description')
+
+  -form_tag session_path do
+    %label{:for=>:login}
+      =t('text.sessions.new.login_label')
+    %span
+      = text_field_tag :login, '', :class=>:input
+    %p
+      =t('text.sessions.new.login')
+      
+    %label{:for=>:password}
+      =t('text.sessions.new.password_label')
+    %span
+      = password_field_tag :password, '', :class=>:input
+    %p
+      =t('text.sessions.new.password')
+    -#      
+      %label{:for=>:remember_me}
+        = check_box_tag 'remember_me', '1', false, :class=>:check_box
+        =t('text.sessions.new.remember_me')        
+      %p
+        =t('text.sessions.new.check_requirement')
+
+    %p
+      = submit_tag t('enter'), :class=>:submit

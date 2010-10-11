@@ -1,0 +1,13 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+
+= object_errors(@report)
+
+.edit_form
+  %h5
+    Создать Новость
+  
+  -form_for :report, :url => reports_path do |f|
+    =render :partial => 'form', :locals => {:f => f, :button=>'Создать'}
+
+= link_to 'Полный список', reports_path

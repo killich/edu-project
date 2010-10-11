@@ -1,0 +1,155 @@
+!!! Strict
+%html{:xmlns=>"http://www.w3.org/1999/xhtml", 'xml:lang'=>"en", :lang=>"en"}
+  %head
+    %meta{'http-equiv'=>"content-type", :content=>"text/html; charset=utf-8"}
+    %meta{ :content => "IE=EmulateIE7", "http-equiv" => "X-UA-Compatible" }
+    %link{:href=>"/images/favicon.ico", :rel=>"shortcut icon"}
+    %title
+      =yield :title
+    =yield :meta
+
+    -# Если это администратор, то вывести на экран
+    -# Меню со всеми функциями
+    -# -------------------------------------------------------------------------
+    -# if logged_in?
+    -# content_for :css do      
+    -# content_for :all_function_bar do 
+    =# render :partial => "shared/all_function_bar"
+    -#if current_user.has_role_policy?(:administrator , :all)
+    -# -------------------------------------------------------------------------
+                
+    =stylesheet_link_tag 'basic/reset.css', :media=>'screen'              # Сборос
+    =stylesheet_link_tag 'basic/headers.css', :media=>'screen'            # Заголовки
+    =stylesheet_link_tag 'basic/style.css', :media=>'screen'              # Базовые стили
+    =stylesheet_link_tag 'basic/structure.css', :media=>'screen'          # Макет(структура)
+    =stylesheet_link_tag 'basic/system_messages.css', :media=>'screen'    # Системные сообщения
+    =stylesheet_link_tag 'basic/bar.css', :media=>'screen'                # Кнопки навигации
+    =stylesheet_link_tag 'basic/navigation.css', :media=>'screen'         # Дополнение к оформлению кнопок навигации
+    =stylesheet_link_tag 'basic/system_navigation.css', :media=>'screen'  # Верхнее меню
+    =stylesheet_link_tag 'basic/content.css', :media=>'screen'            # Оформление сожержимого страниц
+    =stylesheet_link_tag 'basic/footer.css', :media=>'screen'             # Ножки сайта
+    =stylesheet_link_tag 'basic/site_map_block.css', :media=>'screen'
+    =stylesheet_link_tag 'basic/menu_tree.css', :media=>'screen'
+    
+    
+    =javascript_include_tag "jq/jquery-1.4.2.min"
+    =javascript_include_tag "jq/jquery-ui-1.7.2.min"
+    =javascript_include_tag "jq/application"
+      
+    =yield :js
+    =yield :gallery_lightbox
+    =yield :css
+  %body
+    .body
+      -if logged_in? && (controller_name == 'pages' && (['new', 'edit'].include?(action_name)))
+        #base_header{:style=>'display:none;'}
+          = render :partial => 'shared/pagetop_portal_info'
+          = render :partial => 'shared/message'
+          =image_tag @user.base_header.url, :alt=>"iv-schools.ru"
+        .base_header_links.overblock
+          #base_header_show_link
+            =link_to_function 'Показать шапку сайта', "show_block('base_header')"
+          #base_header_hide_link{:style=>'display:none;'}
+            =link_to_function 'Скрыть шапку сайта', "hide_block('base_header')"
+      -else
+        = render :partial => 'shared/pagetop_portal_info'
+        = render :partial => 'shared/message'
+        =image_tag @user.base_header.url, :alt=>"iv-schools.ru"
+
+      .header{:id=>:header}
+        - if @subdomain == 'portal' || @subdomain.nil?
+          = link_to "Ивановский школьный портал iv-schools.ru", root_path
+        - else
+          = link_to @user.subdomain + ".iv-schools.ru", root_path(:subdomain=>@subdomain)
+
+      %ul.system_navigation
+        - if @subdomain == 'portal' || @subdomain.nil?
+          %li
+            = link_to "iv-schools.ru", root_path
+          -#else
+            = link_to @user.subdomain + ".iv-schools.ru", root_path(:subdomain=>@subdomain)
+        %li
+          =link_to t('site_map'), pages_path(:subdomain=>@user.subdomain)
+        
+        - if logged_in?
+          %li
+            =link_to t('cabinet'), cabinet_users_url(:subdomain=>current_user.subdomain), :style=>'color:green;'
+        %li
+          =link_to t('questions'), url_for(:controller=>:questions)
+        %li
+          =link_to t('updates'), url_for(:controller=>:updates)
+        %li
+          - if logged_in?
+            =link_to t('exit'), logout_url(:subdomain=>false)
+          - else
+            =link_to t('login'), login_path(:subdomain=>false)
+        -#
+          %li
+            =link_to t('news'), url_for(:controller=>:reports)
+          %li
+            =link_to t('albums'), url_for(:controller=>:albums)
+          %li
+            =link_to t('documents'), url_for(:controller=>:documents)
+          %li
+            =link_to 'iv36.iv-schools.ru', users_path
+          %li
+            =link_to 'Карта сайта', users_path
+          %li
+            =link_to 'Новости', users_path
+          %li
+            =link_to 'Документы', users_path
+          %li
+            =link_to 'Обратная связь', users_path            
+
+      %table.main
+        %tbody
+          %tr
+            %td.navigation
+              = yield(:navigation_menu) unless yield(:navigation_menu).blank?
+              =# render :partial => "shared/some_partions_exemple" unless (controller_name == 'users' && action_name == 'index')
+              =# yield :all_function_bar
+              
+            %td.content
+              .block
+                = app_flash(flash)
+                =yield
+      
+      =yield :page_information
+
+      .footer
+        =render :partial => "shared/anti_msie6.haml"
+        .block
+          .portal
+            %p
+              =mail_to 'iv-schools@yandex.ru', image_tag('basic/email.gif'), :encode => 'hex', :id=>:mail
+              = link_to t('site_description'), root_url(:subdomain=>false), :class=>'logolink'
+              &copy;
+              &nbsp;2006 &mdash; 2009
+              
+              
+          .alpha.overblock
+            %span{:class=>'ml100'}
+              версия: 0.01 от 12:05 18.04.2010
+            %span#show_version_link
+              =link_to_function 'Узнать больше или сообщить об ошибке на сайте', 'show_version_block()', :class=>:version_block
+            %span#hide_version_link{:style=>'display:none;'}
+              =link_to_function 'Скрыть информацию', 'hide_version_block()', :class=>:version_block
+            #version{:style=>'display:none;'}
+              Сайт запущен в режиме тестирования.
+              %br
+              Сайт создан 11 ноября 2007г.
+              %br
+              Новая версия сайта (с использованием современной технологической платформы) запущена 3 ноября 2009 г.
+              %br
+              Если Вы обнаружили ошибку или у Вас возник вопрос, то Вам следует обратиться
+              =link_to 'cюда', url_for(:controller=>:questions, :subdomain=>false) , :style=>'color:red;'
+            
+            -# Язык интерфейса:
+            =# select("local", "lang", {'английский'=>'/?lang=en', 'русский'=>'/?lang=ru'}, {:selected=>"/?lang=#{cookies[:lang]}"}, :onchange=>"top.location.href = this.options[this.selectedIndex].value")
+          -javascript_tag do
+            jQuery(document).ready(function($){
+            if (jQuery.browser.msie && (jQuery.browser.version == 6)){
+            show_anti_msie_declaration();
+            }
+            });
+          =render :partial => "shared/layouts/analitics"

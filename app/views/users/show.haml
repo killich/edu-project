@@ -1,0 +1,106 @@
+.body
+  %h1
+    Объект
+    = "User"
+    = "#"+@user.id.to_s
+    
+  -if flash[:notice]
+    .notice
+      = flash[:notice]
+
+  -if flash[:error]
+    .error
+      = flash[:error]
+
+  %table
+    %tr
+      %td
+        %table.object_card
+        
+        
+          
+          %tr
+            %td.field
+              ID
+            %td
+            
+              =h @user.id
+                                     
+        
+          
+          %tr
+            %td.field
+              Логин
+            %td
+            
+              =h @user.login
+                                     
+        
+          
+          %tr
+            %td.field
+              E-mail
+            %td
+            
+              =h @user.email
+                                     
+        
+          
+          %tr
+            %td.field
+              Пароль
+            %td
+            
+              =h @user.crypted_password
+                                     
+        
+          
+          %tr
+            %td.field
+              Соль пароля
+            %td
+            
+              =h @user.salt
+                                     
+        
+          
+          %tr
+            %td.field
+              Создан
+            %td
+            
+              =h @user.created_at
+                                     
+        
+          
+          %tr
+            %td.field
+              Обновлен
+            %td
+            
+              =h @user.updated_at
+                                     
+        
+          
+          %tr
+            %td.field
+              Ключ сессии
+            %td
+            
+              =h @user.remember_token
+                                     
+        
+          
+          %tr
+            %td.field
+              TTL ключа сессии
+            %td
+            
+              =h @user.remember_token_expires_at
+                                     
+          %tr
+            %td.field
+              Управление
+            %td
+              = link_to 'Редактировать', edit_user_path(@user)
+              = link_to 'Полный список', users_path

@@ -1,0 +1,47 @@
+/* killich@yandex.ru  */
+/* reset */
+html, body,
+div,  applet, object, iframe,
+h1, h2, h3, h4, h5, h6,
+p,  pre,  abbr, acronym, address,
+big, cite, code, del, dfn,  font, img, ins,
+kbd, q, s, samp, small, strike,
+sub, sup, tt, var, center,
+dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td {
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size: 100.01%;
+  vertical-align:baseline;
+  background:transparent;
+  font-weight:normal;
+  line-height:100%;
+}
+span, a,b,u, i, em, blockquote, strong{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size: 100.01%;
+  vertical-align:baseline;
+  background:transparent;
+  line-height:100%;
+}
+ol, ul        { list-style:none; }
+table, tbody, tr, td { vertical-align:top; border-collapse: collapse; border-spacing: 0; }
+a             { text-decoration: underline;}
+a:hover       { text-decoration: none;}
+p             {line-height:150%; font-size:10pt; }
+.nobr{white-space:nowrap;}
+
+h1,h2,h3,h4,h5,h6 {font-weight:bold; margin-bottom:20px; }
+h1{ font-size:22pt; }
+h2{ font-size:20pt; }
+h3{ font-size:18pt; }
+h4{ font-size:16pt; }
+h5{ font-size:14pt; }
+h6{ font-size:12pt; }
+/* reset */

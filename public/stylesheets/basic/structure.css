@@ -1,0 +1,11 @@
+.main       { margin:25px 0; }
+.navigation { padding:0 10px; width:250px; }
+.content    { padding:0 10px; width:630px; }
+
+.navigation .block{ width:230px; overflow:hidden; zoom;1; }
+
+.data_storage{width:900px;}
+.data_storage .block{width:900px; height:500px; overflow:scroll; }
+
+.full_width_content{ padding:0 10px; width:900px; }
+.full_width_content .block{ float:left; width:880px; overflow:hidden; }

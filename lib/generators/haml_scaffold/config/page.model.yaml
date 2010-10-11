@@ -1,0 +1,38 @@
+:model:
+- :id:
+    :title: ID
+    :type: string
+    :edit: false
+- :user_id: 
+    :title: Владелец
+    :type: string
+- :zip_code:
+    :title: zip-code
+    :type: string
+- :author: 
+    :title: Автор страницы
+    :type: string
+- :keywords: 
+    :title: Ключевые<br />слова
+    :type: string
+- :copyright: 
+    :title: Авторское<br />право
+    :type: string
+- :description:
+    :title: Описание
+    :type: string
+- :title: 
+    :title: Заголовок
+    :type: string
+- :annotation: 
+    :title: Аннотация
+    :type: text
+- :content:
+    :title: Содержимое
+    :type: text
+
+
+
+
+
+

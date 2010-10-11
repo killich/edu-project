@@ -1,0 +1,36 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/users_listing.css', :media=>'screen'
+
+- content_for :title do
+  Список всех пользователей системы:
+  =t('portal_name')
+      
+%h3 Список пользователей сайта
+
+= will_paginate @users, :class=>:pagination, :previous_label=>"&larr;", :next_label=>"&rarr;"
+%br
+
+%ul.users_listing
+  -for user in @users
+    %li{:class=>user.role.name}
+      %table
+        %tr
+          %td
+            = link_to image_tag(user.avatar:mini), root_url(:subdomain=>user.subdomain)
+          %td
+            = link_to user.subdomain, root_url(:subdomain=>user.subdomain)
+            %br
+            %br
+            = link_to h(user.name), root_url(:subdomain=>user.subdomain)
+            %br
+            %br
+            -case user.role.name
+              -when 'administrator'
+                ='Автор портала iv-schools.ru'
+              -when 'site_administrator'
+                ='Администартор сайта'
+              -when 'page_administrator'
+                ='Модератор страниц'
+  
+    %br
+    = will_paginate @users

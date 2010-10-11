@@ -1,0 +1,20 @@
+en:
+  :policies:
+    :empty_section_name:      'section have no name'
+    :section_wrong_name:      'incorrect section name'
+    :section_rule_wrong_name: 'incorrect policy name in section'
+    :section_destroy:         'section deleted'
+    :section_is_not_hash:     'Section is not a Hash - probably it is database damage'
+    :section_hasnt_rule:      'section have no policy'
+    :array_forming_error:     'Error of forming policy Hash - probably it is database damage'
+    :section_exists:          'section exists'
+    :section_create:          'section created'
+    :section_rule_create:     'policy created and activated'
+    :section_rule_destroy:    'policy deleted'
+    :non_exists:              'section is not exists'
+    :try_to_create_section:   'try to create section'
+    :destroy_confirm:         'do you want delete section with all policies? '
+    :have_no_policy:          'policy not exists'
+
+  :access:
+    :denied: "access denied"

@@ -1,0 +1,60 @@
+.map, .admin_map{ margin:0 0 15px 0; }
+.map a, .admin_map a{
+  color:#000;
+  font-size:8pt;
+  font-weight:normal;
+  text-decoration:none;
+  line-height: 150%;
+}
+.map .root a, .admin_map .root a{ font-weight:bold; }
+
+.admin_map a:hover{
+  color:#2476FF;
+  text-decoration:none;
+}
+.admin_map .elem{
+  overflow:hidden;
+  margin:0 0 3px 0;  
+}
+.admin_map .elem:hover{
+  background:#EEE;
+}
+.admin_map .link{
+  margin:0 140px 0 0;
+  padding:5px;
+}
+.admin_map .controls{
+  width:140px;
+  float:right;
+
+}
+.admin_map .childs{
+  margin:0 0 0 20px;
+  border-left:1px dashed #DDD;
+}
+.admin_map .button{
+  width:20px;
+  height:20px;
+  display:block;
+  float:left;
+  margin:0 0 0 3px;
+  cursor:pointer;
+}
+.admin_map .button.new{ background:transparent url(/images/iconza/blue/add.png) no-repeat scroll center center; }
+.admin_map .button.new:hover{ background:transparent url(/images/iconza/red/add.png) no-repeat scroll center center;}
+
+.admin_map .button.edit{ background:transparent url(/images/iconza/blue/edit.png) no-repeat scroll center center; }
+.admin_map .button.edit:hover{ background:transparent url(/images/iconza/red/edit.png) no-repeat scroll center center;}
+
+.admin_map .button.up{ background:transparent url(/images/iconza/blue/up.png) no-repeat scroll center center; }
+.admin_map .button.up:hover{ background:transparent url(/images/iconza/red/up.png) no-repeat scroll center center;}
+
+.admin_map .button.down{ background:transparent url(/images/iconza/blue/down.png) no-repeat scroll center center; }
+.admin_map .button.down:hover{ background:transparent url(/images/iconza/red/down.png) no-repeat scroll center center;}
+
+.admin_map .button.delete{ background:transparent url(/images/iconza/blue/delete.png) no-repeat scroll center center; }
+.admin_map .button.delete:hover{ background:transparent url(/images/iconza/red/delete.png) no-repeat scroll center center;}
+
+.admin_map .undeleted{ background:transparent url(/images/iconza/gray/delete.png) no-repeat scroll center center; }
+.admin_map .cantup{ background:transparent url(/images/iconza/gray/up.png) no-repeat scroll center center; }
+.admin_map .cantdown{ background:transparent url(/images/iconza/gray/down.png) no-repeat scroll center center; }

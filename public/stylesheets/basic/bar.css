@@ -1,0 +1,34 @@
+.bar{
+  background-color:#F9F9F9;
+  padding:10px;
+  text-align:center;
+  font-weight:bold;
+  
+  /*
+  border-bottom:1px solid #AAA;
+  margin-bottom:10px;
+  */
+  border-top:1px solid #BBB;
+  border-bottom:1px solid #BBB;
+  margin-bottom:25px;
+}
+a .bar{
+  font-size:8pt;
+  line-height:150%;
+  color:#2476FF;
+  font-weight:bold;
+  text-decoration:underline;
+  display:block;
+}
+a .bar:hover{
+  color:#FF7211;
+  font-weight:bold;
+  text-decoration:underline;
+}
+
+.parent .bar{background:#E9E9E9;}
+.parent.current .bar{
+  border-bottom:2px solid #FAA85F;
+}
+
+.system .bar{background:#E0ECFF;}

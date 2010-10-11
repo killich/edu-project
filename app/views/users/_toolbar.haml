@@ -1,0 +1,41 @@
+-if logged_in?
+  = image_tag current_user.avatar(:micro)
+  -#
+    .user_bar
+      .div{:style=>'border:3px solid #CCC; margin: 5px 0; height:100px;'}
+        &nbsp;
+      .div{:style=>'border:3px solid #CCC; margin: 5px 0; height:100px;'}
+        &nbsp;
+      =# image_tag current_user.avatar(:original)
+      =# image_tag current_user.avatar(:normal)
+      =# image_tag current_user.avatar(:small)
+      =# image_tag current_user.avatar(:mini)
+      %br
+      %br
+      .block
+        %ul
+          %li
+            - text= content_tag :span, t('cabinet')+" (#{current_user.login})", :class=>:bar
+            = link_to text, cabinet_users_path
+            
+          %li
+            - text= content_tag :span, t('messages') + " (#{(3..10).to_a.rand})", :class=>:bar
+            = link_to text, '#'
+            
+          %li
+            - text= content_tag :span, t('contacts'), :class=>:bar
+            = link_to text, '#'
+            
+          %li
+            - text= content_tag :span, t('home'), :class=>:bar
+            = link_to text, root_path(:subdomain=>current_user.subdomain)
+          -#
+            - if current_user.has_policy_complex_check?(:pages, :manager) || current_user.has_policy_complex_check?(:administrator, :pages)
+              %li
+                - text= content_tag :span, t('page.manage'), :class=>:bar
+                = link_to text, manager_pages_path(:subdomain=>current_user.subdomain)
+            
+          %li
+            - text= content_tag :span, t('exit'), :class=>:bar
+            = link_to text, logout_path
+    

@@ -1,0 +1,67 @@
+<div id='anti_msie_declaration' style='display:none;'><div id='browser_select' style='display:none;'><p><b>Нажмите на значок браузера для перехода к загрузке</b></p><table><tbody><tr><td><a href="http://www.mozilla.com/ru/"><img alt="Mff" src="http://iv-schools.ru/images/basic/mff.jpg" title="Скачать Mozilla FireFox" /></a></td><td>Mozilla FireFox <span class="reccom">(настоятельно рекомендуется для iv-schools.ru)</span></td></tr><tr><td><a href="http://www.microsoft.com/rus/windows/internet-explorer/default.aspx"><img alt="Ie" src="http://iv-schools.ru/images/basic/ie.jpg" title="Скачать Internet Explorer 8" /></a></td><td>Internet Explorer 8</td></tr><tr><td><a href="http://www.opera.com/"><img alt="Op" src="http://iv-schools.ru/images/basic/op.jpg" title="Скачать Opera" /></a></td><td>Opera</td></tr><tr><td><a href="http://www.apple.com/safari/download/"><img alt="Safari" src="http://iv-schools.ru/images/basic/safari.jpg" title="Скачать Safari" /></a></td><td>Safari <span class="noreccom">(не рекомендуется для iv-schools.ru)</span></td></tr><tr><td><a href="http://www.google.com/chrome/"><img alt="Gh" src="http://iv-schools.ru/images/basic/gh.jpg" title="Скачать Google Chrome" /></a></td><td>Google Chrome <span class="noreccom">(не рекомендуется для iv-schools.ru)</span></td></tr></tbody></table><br /><br /><ul><li><a href="#" onclick="anti_msie_declaration_close(); return false;">Я хочу закрыть это предупреждение</a></li></ul></div><div class='block' id='anti_msie_declaration_txt'><p><b>Уважаемый пользователь!</b></p><p>Очень жаль, но Вы используете для просмотра Интернет сайтов браузер старого поколения <span class="nobr red">Internet Explorer 6</span>.</p><p><b><a href="http://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80">Браузер</a></b>&mdash; это программа для просмотра Интернет страниц. Та самая, с помощью которой Вы просматриваете данный сайт.</p><p>Вы должны знать, что использование устаревшего браузера может существенно увеличить риск заражения компьютера вирусами и стать причиной других неприятностей.</p><p>Интернет сайт <b>iv-schools.ru</b> (как и множество других сайтов во всем мире) прекращает поддержку устаревшего браузера <span class="nobr red">Internet Explorer 6</span> с целью улучшения качества обслуживания и повышения общего уровня компьютерной грамотности своих пользователей.</p><ul><li><a href="#" onclick="browser_select(); return false;">Великолепно! Я хочу загрузить и установить<sup>*</sup> современный браузер &raquo;</a></li><li><a href="http://iv-schools.ru/questions">Я хочу задать вопрос автору этого Интернет сайта  &raquo;</a></li><li><a href="#" onclick="anti_msie_declaration_close(); return false;">Я хочу закрыть это предупреждение</a></li></ul><p><sup>*</sup>Если Вы самостоятельно не можете установить программное обеспечение на компьютер &mdash; обратитесь к системному администратору.</p></div><!--[if IE 6]><ifarame>&nbsp;</ifarame><![endif]--></div>
+-#
+  #anti_msie_declaration{:style=>'display:none;'}
+    #browser_select{:style=>'display:none;'}
+      %p
+        %b
+          Нажмите на значок браузера для перехода к загрузке
+      %table
+        %tbody
+          %tr
+            %td
+              =link_to image_tag('basic/mff.jpg', :title=>'Скачать Mozilla FireFox'), 'http://www.mozilla.com/ru/'
+            %td
+              Mozilla FireFox <span class="reccom">(настоятельно рекомендуется для iv-schools.ru)</span>
+          %tr
+            %td
+              =link_to image_tag('basic/ie.jpg', :title=>'Скачать Internet Explorer 8'), 'http://www.microsoft.com/rus/windows/internet-explorer/default.aspx'
+            %td
+              Internet Explorer 8
+          %tr
+            %td
+              =link_to image_tag('basic/op.jpg', :title=>'Скачать Opera'), 'http://www.opera.com/'
+            %td
+              Opera
+          %tr
+            %td
+              =link_to image_tag('basic/safari.jpg', :title=>'Скачать Safari'), 'http://www.apple.com/safari/download/'
+            %td
+              Safari <span class="noreccom">(не рекомендуется для iv-schools.ru)</span>
+          %tr
+            %td
+              =link_to image_tag('basic/gh.jpg', :title=>'Скачать Google Chrome'), 'http://www.google.com/chrome/'
+            %td
+              Google Chrome <span class="noreccom">(не рекомендуется для iv-schools.ru)</span>
+      %br
+      %br
+      %ul
+        %li
+          =link_to_function 'Я хочу закрыть это предупреждение', 'anti_msie_declaration_close()'
+          
+    .block#anti_msie_declaration_txt
+      %p
+        <b>Уважаемый пользователь!</b>
+      %p
+        Очень жаль, но Вы используете для просмотра Интернет сайтов браузер старого поколения
+        <span class="nobr red">Internet Explorer 6</span>.
+      %p
+        %b
+          =link_to "Браузер", "http://ru.wikipedia.org/wiki/%D0%91%D1%80%D0%B0%D1%83%D0%B7%D0%B5%D1%80"
+        &mdash; это программа для просмотра Интернет страниц. Та самая, с помощью которой Вы просматриваете данный сайт.
+        
+      %p
+        Вы должны знать, что использование устаревшего браузера может существенно увеличить риск заражения компьютера вирусами и стать причиной других неприятностей.
+      %p
+        C <b>23 февраля 2010 года</b> Интернет сайт <b>iv-schools.ru</b> (как и множество других сайтов) прекращает поддержку устаревшего браузера <span class="nobr red">Internet Explorer 6</span>
+        с целью улучшения качества обслуживания и повышения общего уровня компьютерной грамотности своих пользователей.
+      %ul
+        %li
+          =link_to_function 'Великолепно! Я хочу загрузить и установить<sup>*</sup> современный браузер &raquo;', 'browser_select()'
+        %li
+          =link_to 'Я хочу задать вопрос автору этого Интернет сайта  &raquo;', url_for(:controller=>:questions, :subdomain=>false)
+        %li
+          =link_to_function 'Я хочу закрыть это предупреждение', 'anti_msie_declaration_close()'
+      %p
+        <sup>*</sup>Если Вы самостоятельно не можете установить программное обеспечение на компьютер &mdash; обратитесь к системному администратору.
+    
+    <!--[if IE 6]><ifarame>&nbsp;</ifarame><![endif]-->

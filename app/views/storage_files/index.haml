@@ -1,0 +1,163 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+  =stylesheet_link_tag 'basic/data_storage.css', :media=>'screen'
+  =stylesheet_link_tag 'basic/paginator', :media=>'screen'
+  =stylesheet_link_tag '/javascripts/jq/lightbox/gallery/gallery', :media=>'screen'  
+- content_for :gallery_lightbox do
+  -# lightbox gallery 0.5
+  =javascript_include_tag "jq/lightbox/gallery/gallery.pack"
+  -javascript_tag do
+    $(function(){
+    $('a.gallery').lightBox({
+    overlayBgColor: '#000',
+    overlayOpacity: 0.6,
+    imageLoading: '/javascripts/jq/lightbox/gallery/loading.gif',
+    imageBtnClose: '/javascripts/jq/lightbox/gallery/close.gif',
+    imageBtnPrev: '/javascripts/jq/lightbox/gallery/prev.gif',
+    imageBtnNext: '/javascripts/jq/lightbox/gallery/next.gif',
+    containerResizeSpeed: 350,
+    txtImage: 'Изображения: ',
+    txtOf: 'из'
+    });//$('a.gallery')
+    });//$(function(){
+- content_for :navigation_menu do
+  =render :partial => "shared/navigation_menu/storage/files"
+      
+- content_for :title do
+  Все файлы пользователя:
+  =@user.login
+  |
+  =t('portal_name')
+
+      
+%h5
+  =@storage_section.title
+
+= object_errors(@storage_file)  
+    
+.edit_form{:style=>'border-color:#FDD;'}
+  .div#add_file_link
+    =link_to_function 'Мне нужно добавить еще один файл', 'show_add_file_form()'
+  .div#add_file_form{:style=>'display:none;'}
+    %h5
+      Добавить файл
+
+    -form_for :storage_file, :url => storage_files_path, :html => { :multipart => true, :method=>:post } do |form|
+
+      %label{:style=>'color:#FF0000;'}
+        Пожалуйста, давайте файлам осмысленные имена
+        %br
+        (сейчас название файла нельзя изменить)
+      %br
+      %label
+        Название файла
+              
+      %div{:style=>"margin:0 0 5px 0;"}
+        =form.text_field :title
+      %br 
+      
+      =hidden_field_tag 'storage_section_zip', @storage_section.zip
+      
+      %label
+        Путь к файлу
+      %div{:style=>"margin:0 0 5px 0;"}
+        =form.file_field :file
+      %br 
+              
+      =submit_tag 'Загрузить', :class=>:submit
+
+= will_paginate @storage_section_files
+ 
+%ul
+  - @storage_section_files.each do |file|
+    %li{:style=>"padding:10px;margin:0 20px 10px 0; border:3px solid #CCC;"}
+      %table{:width=>'100%'}
+        %tr
+          %td
+            .file_header
+              -url= (Project::ADDRESS+file.file.url).split('?').first
+              -file_title= file.title.blank? ? 'без имени' : file.title
+              =link_to file_title, url, :title=>'Просмотр файла'
+            
+            .file_block
+              %b
+                URL адрес файла
+              %p
+                %input{:value=>url, :style=>'width:400px; font-family:Verdana;'}
+              
+            .file_block
+              %b
+                Код для вставки ссылки на этот файл
+              %p
+                -textile_link = "\"#{file_title}\":#{url}"
+                %input{:value=>textile_link, :style=>'width:400px; font-family:Verdana;'}            
+            
+            -# Вставка кpасивого блока с таблицей
+            - if file.is_xls?
+              .file_block
+                %b
+                  Код для вставки таблицы
+                %p
+                  -textile_link = "p=(table). !/images/basic/ico/table.gif(Скачать таблицу: #{file_title})!:#{url}"
+                  %input{:value=>textile_link, :style=>'width:400px; font-family:Verdana;'}              
+            
+            -# Вставка картинки
+            -if file.is_image?                    
+              .file_block
+                %b
+                  Код для вставки изображения
+                %p
+                  -textile_link = "!#{url}(#{file_title})!"
+                  %input{:value=>textile_link, :style=>'width:400px; font-family:Verdana;'}
+              .file_block
+                %b
+                  Код для вставки изображения по центру
+                %p
+                  -textile_link = "p=. !#{url}(#{file_title})!"
+                  %input{:value=>textile_link, :style=>'width:400px; font-family:Verdana;'}
+            
+            .file_block
+              %b
+                Размер файла: 
+              =sprintf("%.3f", (file.file.size.to_f/1.kilobyte.to_f))
+              Kb
+
+          %td{:style=>'width:100px;'}
+            -if file.is_image?
+              =# link_to(image_tag('doctype/100x100/img.jpg', :alt=>'Изображение'), url, :title=>file_title)
+              -zoom = content_tag :span, '', :class=>:zoom
+              = link_to(image_tag(file.file.url(:small), :alt=>'Увеличить изображение') + zoom, url, :title=>file_title, :class=>:gallery)
+            -elsif file.is_doc?
+              = link_to(image_tag('doctype/100x100/doc.jpg', :alt=>'Документ'), url, :title=>file_title)
+            -elsif file.is_txt?
+              = link_to(image_tag('doctype/100x100/txt.jpg', :alt=>'Текст'), url, :title=>file_title)
+            -elsif file.is_ppt?
+              = link_to(image_tag('doctype/100x100/ppt.jpg', :alt=>'Презентация'), url, :title=>file_title)
+            -elsif file.is_xls?
+              = link_to(image_tag('doctype/100x100/xls.jpg', :alt=>'Электронная таблица'), url, :title=>file_title)
+            -elsif file.is_pdf?
+              = link_to(image_tag('doctype/100x100/pdf.jpg', :alt=>'PDF'), url, :title=>file_title)
+            -elsif file.is_psd?
+              = link_to(image_tag('doctype/100x100/psd.jpg', :alt=>'PSD'), url, :title=>file_title)
+            -elsif file.is_media?
+              = link_to(image_tag('doctype/100x100/media.jpg', :alt=>'Медиа файл'), url, :title=>file_title)
+            -elsif file.is_arch?
+              = link_to(image_tag('doctype/100x100/zip.jpg', :alt=>'Архив'), url, :title=>file_title)
+            -else
+              =image_tag 'doctype/100x100/default.jpg', :alt=>'Файл'
+            .trash
+              =link_to '', storage_file_path(file.zip), :method=>:delete, :confirm=>'Вы уверены, что хотите удалить этот файл безвозвратно?', :class=>'file_delete', :alt=>'Удалить Файл', :title=>'Удалить Файл'
+         
+= will_paginate @storage_section_files
+%br
+-#
+  .file_block
+    %b
+      Код для вставки изображения (HTML)
+    %p
+      %input{:value=>image_tag(url, :title=>file_title), :style=>'width:400px; font-family:Verdana;'}
+  .file_block
+    %b
+      Вставки ссылки на этот файл (HTML)
+    %p
+      %input{:value=>link_to(file_title, url), :style=>'width:400px; font-family:Verdana;'}

@@ -1,0 +1,55 @@
+.body
+
+  %h1
+    Управление правами
+
+  .nav
+    =link_to "&laquo; Список групп", admins_roles_path
+  %h3
+    Пользователь
+        
+  - role= @role.settings.is_a?(String) ? YAML::load(@role.settings) : Hash.new
+  - role= role.is_a?(Hash) ? role : Hash.new
+  
+  -if role.is_a?(Hash)
+    - form_for :role, role, :url => { :action=>'update'}, :html => { :method => :put} do |f|
+      -role.each do |name, set|
+        %h4
+          =name
+          %span.controls
+            %a{:href=>"#"} Docs
+            =link_to "Del", admins_role_section_url(@role, name), :method=>:delete, :confirm=>t('policies.destroy_confirm') + name.to_s
+        - if set.is_a?(Hash)
+          %ul.rights
+            - set.each do |n, v|
+              %li
+                = check_box_tag "role[settings][#{name}][#{n}]", true, v
+                =n
+                .controls
+                  %a{:href=>"#"} Docs
+                  =link_to 'Del', delete_rule_admins_role_section_path(@role, name, :name=>n), :method=>:delete, :confirm=>'Удалить правило?'
+
+      = f.submit "Сохранить"
+
+  %h4
+    Создать группу прав
+    
+  - form_tag(new_role_section_admins_role_path, :method => :post, :class=>:new_action) do
+    = text_field_tag 'section_name'
+    = submit_tag "Создать группу"
+
+  %h4
+    Создать политику доступа в группе
+  
+  - unless role.empty?
+    - form_tag(new_role_rule_admins_role_path(@role), :method => :post, :class=>:new_action) do
+      = text_field_tag 'section_rule'
+
+      %select{:name=>"section_name"}
+        -role.each do |name, set|
+          %option{:value=>name}
+            =name
+          
+        %input{:type=>"submit", :value=>"Создать политику"}
+  - else
+    Пожалуйста создайте хотя бы одну группу прав

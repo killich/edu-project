@@ -1,0 +1,30 @@
+-if @page
+  - sd= (@user.login == 'portal') ? nil : @user.login
+  - link_to_page = page_url(@page.zip, :subdomain=>sd)
+        
+  -form_tag do
+    %fieldset
+      %label{:for=>:path}
+        Адрес этой страницы в Интернет:
+      %span
+        = text_field_tag 'path', link_to_page
+        
+      %label{:for=>:created_at}
+        Страница создана:
+      %span
+        = text_field_tag 'created_at', @page.created_at.strftime("%d-%m-%Y")
+        
+      %label{:for=>:updated_at}
+        Страница обновлена:
+      %span
+        = text_field_tag 'updated_at', @page.updated_at.strftime("%d-%m-%Y")
+        
+      %label{:for=>:site_admin}
+        Этот раздел сайта наполняет:
+      %span
+        = text_field_tag 'site_admin', @user.name
+        
+      %label{:for=>:sd}
+        Имя этого раздела в рамках портала:
+      %span
+        = text_field_tag 'sd', @user.login

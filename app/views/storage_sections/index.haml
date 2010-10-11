@@ -1,0 +1,36 @@
+- content_for :navigation_menu do
+  =render :partial => "shared/navigation_menu/to_cabinet"
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+- content_for :title do
+  Хранилище файлов:
+  =@user.login
+  |
+  =t('portal_name')
+
+%h3 Хранилище файлов
+.map
+  %ul
+    - @storage_sections.each do |section|
+      %li{:style=>"padding:10px;margin:0 0 10px 0;"}
+        =link_to image_tag('iconza/blue/downloads_folder.png', :style=>'vertical-align:middle;') + " " + section.title + " (#{section.storage_files.size.to_s} файлов)", storage_files_url(:id=>section.zip), :style=>'font-weight:bold;'
+  
+= object_errors(@page)
+
+-#
+  .edit_form
+    %h5{:style=>'line-height:150%;'}
+      На этапе тестирования Вам предлагается использовать единый каталог файлов,
+      который называется "Основное"
+      %br
+      В этой папке хранятся все ваши файлы из старой версии сайта
+    -#
+      Создать новый раздел
+        
+      -form_for :storage_section, :url => storage_sections_path do |f|
+        %label{:for=>:title}
+          Название раздела
+        %span
+          = f.text_field :name, :class=>:input
+          
+        = submit_tag 'Создать', :class=>:submit

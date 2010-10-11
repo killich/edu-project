@@ -1,0 +1,72 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+
+- content_for :title do
+  Центр управления:
+  = @user.login
+  |
+  =t('portal_name')
+      
+%h3=t('cabinet')
+
+.block
+  %ul
+    
+    %li
+      - text= content_tag :span, t('page.manage'), :class=>:bar
+      = link_to text, manager_pages_path(:subdomain=>@user.subdomain)
+    -#
+      %li
+        - text= content_tag :span, t('report.manage'), :class=>:bar
+        = link_to text, reports_path(:subdomain=>@user.subdomain)
+    
+    %li
+      - text= content_tag :span, t('my_files'), :class=>:bar
+      = link_to text, storage_sections_url(:subdomain=>@user.subdomain)
+    %li
+      -# Определяется кол-во новых сообщений, и если они есть - то формируется текст
+      - nqs= @user.new_questions.size
+      - new_questions_size = ( nqs > 0 ? "(новых : #{nqs})" : "")
+      - text= content_tag :span, "Вопрос/Ответ #{new_questions_size}", :class=>:bar
+      = link_to text, box_questions_path
+    %li
+      - text= content_tag :span, t('profile'), :class=>:bar
+      = link_to text, profile_users_path(:subdomain=>@user.subdomain)
+    
+    - if logged_in?
+      -# Если есть ролевой доступ к администрированию пользователей
+      - if current_user.has_role_policy?(:administrator, :users)
+        %li.system
+          - text= content_tag :span, "Панель управления", :class=>:bar
+          = link_to text, '/admins'
+          
+          
+      -# Если есть ролевой доступ к администрированию ролей
+      - if current_user.has_role_policy?(:administrator, :roles)
+        %li.system
+          - text= content_tag :span, "Роли", :class=>:bar
+          = link_to text, admins_roles_path
+          
+    .edit_form
+      %h5
+        Изображение для шапки Вашего сайта (900x250 точек)
+      -form_for :user, :url => base_header_user_path(@user.zip), :html => { :multipart => true, :method=>:put } do |form|
+        =form.file_field :base_header
+        =submit_tag 'Установить', :class=>:submit
+    
+    -#
+      %li
+        - text= content_tag :span, t('my_news'), :class=>:bar
+        = link_to text, manager_pages_path(:subdomain=>current_user.subdomain)
+        
+      %li
+        - text= content_tag :span, t('my_questions'), :class=>:bar
+        = link_to text, manager_pages_path(:subdomain=>current_user.subdomain)
+        
+      %li
+        - text= content_tag :span, t('my_albums'), :class=>:bar
+        = link_to text, manager_pages_path(:subdomain=>current_user.subdomain)
+        
+      %li
+        - text= content_tag :span, t('my_documents'), :class=>:bar
+        = link_to text, manager_pages_path(:subdomain=>current_user.subdomain)

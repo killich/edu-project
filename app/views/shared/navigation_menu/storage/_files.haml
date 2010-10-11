@@ -1,0 +1,8 @@
+.block
+  %ul
+    %li.system
+      - text= content_tag :span, '&laquo; Назад в личный кабинет', :class=>:bar
+      = link_to text, cabinet_users_url(:subdomain=>current_user.subdomain)
+    %li.system
+      - text= content_tag :span, '&laquo; Назад в хранилище файлов', :class=>:bar
+      = link_to text, storage_sections_url(:subdomain=>@subdomain) 

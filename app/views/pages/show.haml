@@ -1,0 +1,33 @@
+=render :partial => 'site_map_navigation', :locals=>{:navigation_menu=>@navigation_menu}
+
+- content_for :page_information do
+  .appreciably_information_block
+    .links
+      #appreciably_information_show_link
+        =link_to_function 'Узнать существенную информацию об этой странице', "show_block('appreciably_information')"
+      #appreciably_information_hide_link{:style=>'display:none;'}
+        =link_to_function 'Скрыть информацию об этой странице', "hide_block('appreciably_information')"
+    #appreciably_information{:style=>'display:none;'}
+      = render :partial => "shared/pages/page_basic_info", :locals => {:user => @user, :page=>@page}
+
+-if @page
+  - content_for :title do
+    = "#{@user.login}.iv-schools.ru &raquo; "
+    = Sanitize.clean(@page.title)
+    |
+    =t('portal_name')
+  - content_for :meta do
+    - if @page.description.blank?
+      %meta{ :name => "description", :content => "Ивановский Региональный школьный Портал, Авторский школьный портал, Илья Зыкин, Иваново, Информатика, Школьный Портал, Школа, Компьютерная грамотность, Killich, Тот самый учитель информатики, Кохма"}
+      %meta{ :name => "keywords", :content => "Ивановский Региональный школьный Портал, Авторский школьный портал, Илья Зыкин, Иваново, Информатика, Школьный Портал, Школа, Компьютерная грамотность, Killich, Тот самый учитель информатики, Кохма" }
+      %meta{ :name => "author", :content => "Ивановский Региональный школьный Портал, Авторский школьный портал, Илья Зыкин, Иваново, Информатика, Школьный Портал, Школа, Компьютерная грамотность, Killich, Тот самый учитель информатики, Кохма" }
+    - else
+      %meta{ :name => "description", :content => Sanitize.clean(@page.description)}
+      %meta{ :name => "keywords", :content => "Ивановский Региональный школьный Портал, Авторский школьный портал, Илья Зыкин, Иваново, Информатика, Школьный Портал, Школа, Компьютерная грамотность, Killich, Тот самый учитель информатики, Кохма" }
+      %meta{ :name => "author", :content => "Ивановский Региональный школьный Портал, Авторский школьный портал, Илья Зыкин, Иваново, Информатика, Школьный Портал, Школа, Компьютерная грамотность, Killich, Тот самый учитель информатики, Кохма" }
+            
+      -# %meta{ :name => "keywords", :content => "#{h @page.keywords}" }
+      -# %meta{ :name => "author", :content => "#{h @page.author}" }
+  .page
+    %h2= Sanitize.clean(@page.title, SatitizeRules::Config::TITLE)
+    = @page.prepared_content

@@ -1,0 +1,124 @@
+
+.body
+  %h1
+    Новый объект Page
+
+  %table
+    %tr
+      %td
+        -form_for(@page, :url => admins_pages_path) do |f|
+          = f.error_messages
+          %table.object_card
+            
+            %tr
+              %td.field
+                Владелец
+              %td
+                %span
+                  -if params[:user_id]
+                    = f.hidden_field :user_id, :value=>params[:user_id]
+                    = User.find_by_id(params[:user_id]).name
+                  -else
+                    = f.select("user_id", User.find(:all).collect{|u| [u.name, u.id ] })
+                  
+            %tr
+              %td.field
+                id родителя
+              %td
+                %span
+                  - if params[:parent_id]
+                    = f.hidden_field :parent_id, :value=>params[:parent_id]
+                    = Page.find_by_id(params[:parent_id]).title
+                  - else
+                    = f.text_field :parent_id, :class=>:scaffold_field
+
+            %tr
+              %td.field
+                zip
+              %td
+                %span
+                  = f.text_field :zip, :class=>:scaffold_field
+                                    
+            %tr
+              %td.field
+                Автор страницы
+              %td
+                
+                  
+                %span
+                  = f.text_field :author, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Ключевые<br />слова
+              %td
+                
+                  
+                %span
+                  = f.text_field :keywords, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Авторское<br />право
+              %td
+                
+                  
+                %span
+                  = f.text_field :copyright, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Описание
+              %td
+                
+                  
+                %span
+                  = f.text_field :description, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Заголовок
+              %td
+                
+                  
+                %span
+                  = f.text_field :title, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Аннотация
+              %td
+                
+                  
+                .editable_text_field
+                  %span
+                    = f.text_area :annotation, :class=>:scaffold_textarea
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Содержимое
+              %td
+                
+                  
+                .editable_text_field
+                  %span
+                    = f.text_area :content, :class=>:scaffold_textarea
+                                                                         
+            %tr
+              %td.field
+                Управление
+              %td
+                = f.submit "Создать"
+                = link_to 'Полный список', admins_pages_path

@@ -1,0 +1,62 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+  
+.block
+  %ul    
+    %li.system
+      - text= content_tag :span, "Панель управления", :class=>:bar
+      = link_to text, "/admins"
+      
+    %li.system
+      - text= content_tag :span, "Пользователи", :class=>:bar
+      = link_to text, admins_users_path
+
+  .edit_form
+    %h3
+      Редактирование пользователя
+    %p
+      Данная форма позволяет выполнить редактирование данных пользователя
+
+    -form_for(@user, :url => { :action=>'update', :controller=>'admins/users' }) do |f|
+      = f.error_messages
+      
+      %label{:for=>:id}
+        ID #
+        =h @user.id
+      %p
+        &nbsp;
+
+
+      %label{:for=>:login}
+        Логин
+      %span
+        = f.text_field :login, :class=>:input
+      %p
+        Логин &mdash; это ваш псеводоним в системе iv-schools.ru, который пользователь указал при регистрации
+        
+      %label{:for=>:email}
+        E-mail
+      %span
+        = f.text_field :email, :class=>:input
+      %p
+        Адрес электронной почты пользователя
+        
+
+      %label{:for=>:password}
+        Пароль
+      %span
+        = f.text_field :crypted_password, :class=>:input
+      %p
+        Пароль для доступа в систему
+        
+      %p
+        = submit_tag 'Обновить', :class=>:submit
+        
+  %h2
+    Правовая группа
+
+  - user_role= @user.role
+  -#:url => { :action => "update" }
+  -form_for(@user, :url=>change_role_admins_user_path(@user), :html => { :method => :post } ) do |f|
+    = f.select(:role_id, Role.find(:all).collect {|p| [ p.title, p.id ] }, :selected => @user.role_id)
+    = submit_tag "Установить"

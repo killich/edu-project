@@ -1,0 +1,27 @@
+.footer{
+  border-top:1px solid #CCC;
+}
+.footer .block{
+  margin:10px 10px 20px 10px ;
+}
+.footer .block .portal{
+}
+.footer .block .portal p{
+  font-size:8pt;
+  margin-bottom:5px;
+}
+.portal p a#mail{
+    float:right;
+    *margin-top:2px;
+}
+.portal p img{vertical-align:text-bottom;}
+.footer .block .portal a{
+  font-size:8pt;
+  text-decoration:none;
+  color:#000;
+}
+.footer .block .portal a.logolink:hover{ border-bottom:1px dotted #000; }
+.footer .block .moderator{
+  line-height:150%;
+  margin-bottom:10px;
+}

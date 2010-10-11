@@ -1,0 +1,16 @@
+.main_bar_div{
+  width:895px;
+  border:4px solid #EEE;
+}
+.main_bar img{
+  vertical-align:middle;
+}
+.main_bar{
+  padding:0;
+  border-collapse:separate;
+}
+.main_bar td{
+  vertical-align:middle;
+  padding:10px 20px;
+  border-right:2px solid #EEE
+}

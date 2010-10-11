@@ -1,0 +1,36 @@
+development:
+  adapter: mysql
+  host: localhost
+  username: root
+  password: #qwerty
+  database: iv_schools_github
+  encoding: utf8
+  timeout: 5000
+
+production:
+  adapter: mysql
+  host: localhost
+  username: root
+  password: #qwerty
+  database: iv_schools_github_production
+  encoding: utf8
+  timeout: 5000
+
+test:
+  adapter: mysql
+  host: localhost
+  username: root
+  password: #qwerty
+  database: iv_schools_github_test
+  encoding: utf8
+  timeout: 5000
+
+# old database for php engine
+old_iv_schools:
+  adapter: mysql
+  host: localhost
+  username: root
+  password: #qwerty
+  database: iv_schools_php
+  encoding: utf8
+  timeout: 5000

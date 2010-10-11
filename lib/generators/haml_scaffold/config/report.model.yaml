@@ -1,0 +1,35 @@
+:model:
+- :id:
+    :title: ID
+    :type: string
+    :edit: false
+- :user_id: 
+    :title: Владелец
+    :type: string
+- :zip_code:
+    :title: zip-code
+    :type: string
+- :title: 
+    :title: Заголовок
+    :type: string
+- :description:
+    :title: Описание
+    :type: string
+- :content: 
+    :title: Содержимое
+    :type: string
+- :prepared_content: 
+    :title: Безопасный контент
+    :type: text
+- :display_state:
+    :title: Состояние отображения
+    :type: text
+- :settings:
+    :title: Хеш настроек
+    :type: text
+
+
+
+
+
+

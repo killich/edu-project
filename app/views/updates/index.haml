@@ -1,0 +1,61 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/paginator.css', :media=>'screen'
+  =stylesheet_link_tag 'basic/updates_list.css', :media=>'screen'
+
+- content_for :title do
+  Обновления в разделе
+      
+%h5
+  Список обновлений:
+  %span{:class=>'nobr'}
+    =@user.subdomain + ".iv-schools.ru"
+  
+
+= will_paginate @update_events
+
+%table.time_list
+  %tbody
+    %tr
+      %th Описание
+      %th Объект
+      %th Событие
+      %th Время
+    - odd_even = 1
+    -for upevt in @update_events
+      - odd_even += 1
+      %tr{:class=>"#{(odd_even & 1 == 0) ? 'even' : 'odd'}"}
+        %td.name
+          -if upevt.event_object_zip.blank?
+            =link_to upevt.event_object_title, '#'
+          -else
+            =link_to upevt.event_object_title, page_path(upevt.event_object_zip)
+          
+        %td
+          -case upevt.event_object_type
+            -when 'Page'
+              ='Страница'
+            -when 'Question'
+              ='Вопрос'
+            -else
+              = 'Не определен'
+        %td
+          -case upevt.event_type
+            -when 'page_update'
+              %span{:class=>:blue}
+                ='Страница обновлена'
+            -when 'page_create'
+              %span{:class=>:green}
+                ='Страница создана'
+            -when 'page_destroy'
+              %span{:class=>:red}
+                ='Страница удалена'
+            -else
+              = 'Не определено'
+        %td
+          %span.nobr
+            =upevt.created_at.strftime("%H:%M")
+          %span.nobr
+            =upevt.created_at.strftime("%d-%m-%Y")
+        
+
+= will_paginate @update_events

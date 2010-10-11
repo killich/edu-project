@@ -1,0 +1,91 @@
+%h5.gray
+  = f.text_field :title, :class=>:input
+  = "&laquo; " + title
+%fieldset  
+  .view_buttons.overblock
+    =link_to_function "Разметка", "show_markup()", :class=>:show_markup
+    =link_to_function "Предпросмотр", "show_html()", :class=>:show_html
+    =link_to_function "Инструкция", "show_markup_help()", :class=>:show_markup_manual
+
+  #markup_preview_block
+    %h5.gray{:style=>'background:#EEFFEE; border:2px solid #66BB66; color:#000; padding:5px;'}
+      РАЗМЕТКА (см. Инструкцию)
+    %span
+      = f.text_area :content, :class=>:textarea_work
+    .button_block
+      = submit_tag button, :class=>:submit
+        
+  #html_preview_block{:style=>'display:none'}
+    %h5.gray{:style=>'background:#87B3FF; border:2px solid #4472BF; color:#FFF; padding:5px;'}
+      ПРЕДПРОСМОТР
+    #html_preview
+      &nbsp;
+    %h5.gray
+      =button
+    .button_block
+      = submit_tag button, :class=>:submit
+      
+  #markup_help_block{:style=>'display:none'}
+    %h5.gray{:style=>'background:#A084FB; border:2px solid #3F09F4; color:#FFF; padding:5px;'}
+      ИНСТРУКЦИЯ
+    =render :partial => 'markup_help'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  -#      
+    %div
+      =#link_to_function 'HTML2Textile', 'html2textile()'
+      %p#html2textile
+  -#
+    %label{:for=>:page_author}
+      Автор страницы
+    %span
+      = f.text_field :author, :class=>:input
+      
+    %label{:for=>:page_keywords}
+      Ключевые слова
+    %span
+      = f.text_field :keywords, :class=>:input
+
+    %label{:for=>:page_description}
+      Краткое описание
+    %span
+      = f.text_field :description, :class=>:input
+      
+    %label{:for=>:page_copyright}
+      Авторское право
+    %span
+      = f.text_field :copyright, :class=>:input
+
+    %label{:for=>:page_annotation}
+      Аннотация страницы (о чем рассказывает страница)
+    %span
+      = f.text_area :annotation, :class=>:textarea_work
+  -#
+    %h5
+      Вставка HTML разметки
+    %br
+    %div{:style=>'text-align:center;'}
+      =render :partial => "shared/editor/buttons"
+    %br                
+
+  =# submit_tag 'Обновить', :class=>:submit

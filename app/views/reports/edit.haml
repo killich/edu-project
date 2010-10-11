@@ -1,0 +1,11 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+ 
+= object_errors(@report)
+
+.edit_form
+  %h5
+    Редактирование Новости
+     
+  -form_for(@report) do |f|
+    =render :partial => 'form', :locals => {:f => f, :button=>'Обновить'}

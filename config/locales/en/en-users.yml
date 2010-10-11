@@ -1,0 +1,14 @@
+en:
+  :user:
+    :field:
+      :password: 'Password'
+      :password_confirmation: 'Password confirmation'
+      :login: 'Login (name of account)'
+      :email: 'Email (your email box)'
+
+    :auth:
+      :updated: "thank you for signup in iv-schools.ru"
+      :cant_be_create: 'user can not be create'
+      :entered: "wellcome to iv-schools.ru"
+      :logouted: "Good bay! iv-schools.ru waiting for you visit again"
+      :enter_error: "Login or Email - incorrected"

@@ -1,0 +1,7 @@
+- unless params[:textile_text].blank?
+  .content
+    .page
+      -str = params[:textile_text].sharps2anchor
+      -str = RedCloth.new(str).to_html
+      =Sanitize.clean(str, SatitizeRules::Config::CONTENT)
+      

@@ -1,0 +1,17 @@
+ul.users_listing li{
+  border:3px solid #EEE;
+  padding:10px;
+  margin-bottom:10px;
+  overflow:hidden;
+  zoom:1;
+}
+ul.users_listing li table tr td{
+  vertical-align:middle;
+  padding-right:20px;
+}
+ul.users_listing li.administrator{
+  border:3px solid #A1C9FF;
+}
+ul.users_listing li.site_administrator{
+  border:3px solid #A1C9FF;
+}

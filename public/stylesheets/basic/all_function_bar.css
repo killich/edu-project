@@ -1,0 +1,34 @@
+#all_function{
+    padding:3px;
+    border:2px solid #CBA135;
+    border-bottom:0;
+}
+#all_function a{
+    color:#2476FF;
+}
+
+#all_function_show_link, #all_function_hide_link{
+    padding:3px;
+    background:#CBA135;
+    color:#FFF;
+    line-height:100%;
+}
+#all_function_show_link a, #all_function_hide_link a{
+    color:#FFF;
+}
+#all_function_show_link, #all_function_hide_link{
+    padding-left:5px;
+    padding-bottom:3px;
+}
+#all_function_show_link a:hover, #all_function_hide_link a:hover{
+    color:#FFF;
+}
+#all_function ul{
+    margin:5px 5px 2px 5px;
+    padding:0;
+}
+#all_function ul li{
+    -float:left;
+    -width:99%;
+    margin-bottom:5px;
+}

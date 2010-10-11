@@ -1,0 +1,12 @@
+tmp
+db/schema.rb
+doc
+log
+*.txt
+*.bat
+*Thumbs.db*
+*.DS_Store*
+public/system
+public/uploads
+public/*uploads
+public/uploads*

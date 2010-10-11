@@ -1,0 +1,133 @@
+/* killich@yandex.ru */
+
+h1{margin:20px 0;}
+body{ font-family:Tahoma,Verdana,Trebuchet MS,Arial,serif; }
+.body{ margin:0 75px; padding:0 0 15px;}
+a{
+    font-size:8pt;
+    color:#FFF;
+    background:#99F;
+    padding:3px;
+}
+a:hover{
+    font-size:8pt;
+    color:#000;
+    background:transparent;
+    padding:3px;
+}
+table, th, td{
+  border:1px solid #EEE;
+  padding:10px;
+  font-size:8pt;
+  border-bottom:1px solid #AAA;
+  margin:10px 0;
+}
+th{
+  font-weight:bold;
+}
+table.object_card{
+  border:5px solid #CCC;
+  border-collapse:separate;
+  padding:0;
+  margin:0;
+}
+.object_card .field{
+  border-right:1px solid #000000;
+  font-weight:bold;
+}
+.text_field{
+  height:100px;
+  line-height:150%;
+  overflow:auto;
+  width:280px;
+}
+.editable_text_field{
+  height:300px;
+  width:800px;
+}
+.readeble_text_field{
+  width:800px;
+}
+.scaffold_field{
+  border:1px solid #EEE;
+  border-left:4px solid #FFEBA4;
+  padding:2px 0 2px 5px;
+  width:75%;
+  font-family:Tahoma,Verdana,Arial;
+  font-size:8pt;
+}
+.scaffold_textarea{
+  border:1px solid #EEE;
+  border-left:4px solid #FFEBA4;
+  font-family:Tahoma,Verdana,Arial;
+  font-size:8pt;
+  height:295px;
+  padding:5px 0 0 5px;
+  width:790px;
+}
+/*flash*/
+.notice{
+  padding:10px;
+  margin:10px;
+  border:2px solid #CCF;
+  font-size:10pt;
+}
+.error{
+  padding:10px;
+  margin:10px;
+  border:2px solid #FCC;
+  font-size:10pt;
+}
+/*flash*/
+
+/*pagination */
+.scaffold_pagination {}
+.scaffold_pagination a, .scaffold_pagination span {
+  padding: 5px;
+}
+.scaffold_pagination span.disabled{
+  color: #CCF;
+}
+.scaffold_pagination span.current{
+  background:#9999FF none repeat scroll 0 0;
+  color:#FFFFFF;
+  font-size:8pt;
+}
+.scaffold_pagination a{
+  font-size:8pt;
+  background:transparent;
+  color:#000;
+}
+.scaffold_pagination a:hover, .scaffold_pagination a:focus{
+  background:transparent;
+}
+.scaffold_pagination .page_info{}
+.scaffold_pagination .prev_page, .scaffold_pagination .next_page{
+  font-size:17pt;
+  font-family:Times New Roman;
+  text-decoration:none;
+}
+.scaffold_pagination a.prev_page, .scaffold_pagination a.next_pager{
+  font-size:17pt;
+  font-family:Times New Roman;
+  text-decoration:none;
+}
+.scaffold_pagination a.prev_page:hover, .scaffold_pagination a.next_page:hover{
+  color:#F00;
+  font-size:17pt;
+  font-family:Times New Roman;
+  text-decoration:none;
+}
+.scaffold_pagination .prev_page {
+  margin:0 10px 0 0;
+}
+.scaffold_pagination .next_page{
+  margin:0 0 0 10px;
+}
+.scaffold_pagination a.prev_page:hover{
+  margin:0 10px 0 0;
+}
+.scaffold_pagination a.next_page:hover{
+  margin:0 0 0 10px;
+}
+/*pagination */

@@ -1,0 +1,29 @@
+:model:
+- :id: 
+    :title: ID
+    :type: string
+    :edit: false
+- :login: 
+    :title: Логин
+    :type: string
+- :email: 
+    :title: E-mail
+    :type: string
+- :crypted_password: 
+    :title: Пароль
+    :type: string
+- :salt: 
+    :title: Соль пароля
+    :type: string
+- :created_at: 
+    :title: Создан
+    :type: string
+- :updated_at: 
+    :title: Обновлен
+    :type: string
+- :remember_token: 
+    :title: Ключ сессии
+    :type: string
+- :remember_token_expires_at: 
+    :title: TTL ключа сессии
+    :type: string

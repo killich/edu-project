@@ -1,0 +1,115 @@
+.body
+  %h1
+    Редактирование User
+    
+  %table
+    %tr
+      %td
+        -form_for(@user) do |f|
+          = f.error_messages
+          %table.object_card
+            
+            
+            
+            %tr
+              %td.field
+                ID
+              %td
+                
+                = h @user.id
+                                                       
+            
+            
+            %tr
+              %td.field
+                Логин
+              %td
+                
+                  
+                %span
+                  = f.text_field :login, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                E-mail
+              %td
+                
+                  
+                %span
+                  = f.text_field :email, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Пароль
+              %td
+                
+                  
+                %span
+                  = f.text_field :crypted_password, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Соль пароля
+              %td
+                
+                  
+                %span
+                  = f.text_field :salt, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Создан
+              %td
+                
+                  
+                %span
+                  = f.text_field :created_at, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Обновлен
+              %td
+                
+                  
+                %span
+                  = f.text_field :updated_at, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                Ключ сессии
+              %td
+                
+                  
+                %span
+                  = f.text_field :remember_token, :class=>:scaffold_field
+                                                                         
+            
+            
+            %tr
+              %td.field
+                TTL ключа сессии
+              %td
+                
+                  
+                %span
+                  = f.text_field :remember_token_expires_at, :class=>:scaffold_field
+                                                                         
+            %tr
+              %td.field
+                Управление
+              %td
+                = f.submit "Обновить"
+                = link_to 'Показать', @user
+                = link_to 'Полный список', users_path

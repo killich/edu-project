@@ -1,0 +1,24 @@
+- content_for :css do
+  =stylesheet_link_tag 'basic/map.css', :media=>'screen'
+- content_for :title do
+  Карта сайта пользователя:
+  =@user.login
+  |
+  =t('portal_name')
+
+-if @pages_tree.empty?
+  .map
+    %h5
+      Нет страниц с содержимым для отображения
+-else
+  .map
+    - site_name= content_tag :span, @user.site_name, :class=>'nobr'
+    %h5=[t('site_map'), site_name].join(' ')
+    %ul
+      :ruby
+        localize={
+          :id_of_element=>t('page.zip_of_page')
+        }
+      =ans_show_tree(@pages_tree, :idname=>'zip', :localize=>localize)
+      
+      

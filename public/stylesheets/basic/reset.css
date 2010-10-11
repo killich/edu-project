@@ -1,0 +1,16 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, img, font, pre, blockquote, i, b, u, s, strike, sub, sup, tt, big, small, center, abbr, em, code, acronym, address, ins, del, strong, var, cite, dfn, kbd, samp, dd, dl, dt, ol, ul, li, caption, table, tbody, tfoot, thead, tr, th, td, form, fieldset, legend, label{margin:0; padding:0; border:0; outline:0; font-size: 100.01%; vertical-align:baseline; background:transparent; line-height:100%;}
+html, body, div, applet, object, iframe, img, p, pre, blockquote, dd, dl, dt, ol, ul, li, caption, table, tbody, tfoot, thead, tr, th, td, form, fieldset, legend, label{font-weight:normal; padding:0 0 1px 0;} /*!attention!*/
+img, p, pre, blockquote, dd, dt, li, caption, legend, label{line-height:150%;}
+table, tr, td{vertical-align:top; border-collapse:collapse; border-spacing:0;}
+ol, ul{list-style:none; margin: 0 0 15px 0;}
+li{list-style-position:inside;}
+img{padding:0;}
+p{margin:0 0 15px 0; line-height:150%;}
+a{text-decoration:underline; color:#2476FF;}
+a:hover {text-decoration:none;}
+img{vertical-align:top;}
+sup, sub{padding:0; margin:0; font-size:85%; zoom:1;}
+sup{vertical-align:40%;}
+sub{vertical-align:-40%;}
+.overblock{overflow:hidden; zoom:1;}
+.nobr{white-space:nowrap;}

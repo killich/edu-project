@@ -1,0 +1,60 @@
+- content_for :navigation do
+  =render :partial => 'admins/navigation'
+  
+- content_for :css do
+  =stylesheet_link_tag 'admins/style', :media=>'screen'
+  =stylesheet_link_tag 'basic/paginator', :media=>'screen'      
+
+=# link_to 'Создать пользователя', new_admins_user_path
+=# link_to 'список пользователей', admins_users_path
+    
+.block
+  %ul    
+    %li.system
+      - text= content_tag :span, "Панель управления", :class=>:bar
+      = link_to text, "/admins"
+    %li.system
+      - text= content_tag :span, "Создать нового пользователя", :class=>:bar
+      = link_to text, new_admins_users_path
+      
+  .admins   
+    =# will_paginate @users, :class=>:pagination, :previous_label=>"&larr;", :next_label=>"&rarr;"
+
+    %table.listing
+      %tr
+        %th.id
+          ID 
+        %th.login
+          Логин
+        %th.name
+          Ф.И.О.
+        %th.email
+          E-mail   
+      -color= true
+      -for user in @users
+        -# Строчка с подсветкой
+        - if color
+          -color= !color
+          %tr
+            %td.id
+              =h user.id     
+            %td
+              = link_to h(user.login), edit_admins_user_path(user)
+            %td
+              = link_to user.name, edit_admins_user_path(user)
+            %td
+              =h user.email
+        -else
+          -color= !color
+          %tr.item
+            %td.id
+              =h user.id     
+            %td
+              = link_to h(user.login), edit_admins_user_path(user)
+            %td
+              = link_to user.name, edit_admins_user_path(user)
+            %td
+              =h user.email
+
+    %br
+    = will_paginate @users, :class=>:pagination, :previous_label=>"&larr;", :next_label=>"&rarr;"

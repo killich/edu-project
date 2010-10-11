@@ -1,0 +1,21 @@
+/*
+.navigation a{
+  font-size:9pt;
+  color:#A2B3D3;
+  font-weight:bold;
+  line-height:150%;
+}
+.navigation a:hover{
+  color:#16181D;
+}
+.navigation li{
+ zoom:1;
+}
+.navigation li.parent{
+  padding-bottom:10px;
+  background:transparent url(/images/basic/pointer.jpg) no-repeat scroll 50% 95%;
+}
+.navigation li.parent.parent.current.last{
+  background-image:none;
+}
+*/

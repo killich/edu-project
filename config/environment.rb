@@ -26,9 +26,9 @@ Rails::Initializer.run do |config|
 
   # Предполагается, что начальная инициализация данных приожения
   # будет проводится при помощи Фабрик
-  #config.gem "thoughtbot-factory_girl",
-  #         :lib    => "factory_girl",
-  #         :source => "http://gems.github.com"
+  config.gem "thoughtbot-factory_girl",
+           :lib    => "factory_girl",
+           :source => "http://gems.github.com"
              
   # Для тестового заполнения данными требуется gem faker
   # Установка всех гемов выполняется командой
@@ -76,5 +76,5 @@ require 'sanitize'
 require 'redcloth'
 
 # Данное определение можно убрать после запуска rake файлов, подготовливающих систему к запуску
-# require 'factory_girl'
-# require 'faker'
+require 'factory_girl'
+require 'faker'

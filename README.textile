@@ -1,1 +1,74 @@
 h3. Школьный проект iv-schools.ru
+
+h4. Установка
+
+#ruby -v
+>> ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]
+
+#gem -v
+>> 1.3.6
+
+#gem install -v=2.3.4 rails --no-ri --no-rdoc
+>> Successfully installed activesupport-2.3.4
+>> Successfully installed activerecord-2.3.4
+>> Successfully installed rack-1.0.1
+>> Successfully installed actionpack-2.3.4
+>> Successfully installed actionmailer-2.3.4
+>> Successfully installed activeresource-2.3.4
+>> Successfully installed rails-2.3.4
+>> 7 gems installed
+
+#gem install sanitize --no-ri --no-rdoc
+>> Successfully installed nokogiri-1.4.3.1-x86-mswin32
+>> Successfully installed sanitize-1.2.1
+
+#gem install haml  --no-ri --no-rdoc
+>> Successfully installed haml-3.0.21
+
+#gem install RedCloth --no-ri --no-rdoc
+Installing ri documentation for RedCloth-4.2.3-x86-mswin32-60
+
+#gem list
+
+*** LOCAL GEMS ***
+
+/* Кажется эти гемы основные */
+faker (0.3.1)
+mysql (2.7.3)
+sanitize (1.2.1)
+RedCloth (4.2.3)
+rmagick (2.12.0)
+nokogiri (1.4.3.1)
+haml (3.0.21, 3.0.13)
+hpricot (0.6)
+/* Кажется эти гемы основные */
+
+#rake db:create:all
+
+#ImageMagick-6.5.6-8-Q8-windows-dll.exe
+#gem install rmagick-2.12.0-x86-mswin32.gem --local
+
+#gem install faker
+#rake gems:install
+
+#rake db:basic_data
+#rake db:pages:create
+#ruby script/server
+
+
+================================================
+C:\Windows\System32\drivers\etc\hosts
+
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+127.0.0.1	localhost
+127.0.0.1	iv-schools.info
+127.0.0.1	portal.iv-schools.info
+================================================
+
+P.S.:
+Для тестового заполнения данными требуется gem faker
+#script/plugin install git://github.com/collectiveidea/awesome_nested_set.git
+
+

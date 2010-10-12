@@ -3,7 +3,7 @@ namespace :db do
   # rake db:basic_data
   desc 'create basic data'
   
-  task :basic_data => ['db:drop', 'db:create', 'db:migrate', 'db:roles:create', 'db:users:create'] # , 'db:import:start', 'db:import:asks'
+  task :basic_data => ['db:drop', 'db:create', 'db:migrate', 'db:roles:create', 'db:users:create', 'db:pages:create', 'storage:add'] # , 'db:import:start', 'db:import:asks'
   # rake paperclip:refresh CLASS='StorageFile'
       
   # Раздел создания базовых пользователей системы
@@ -27,7 +27,7 @@ namespace :db do
       profile= Factory.create(:empty_profile, :user_id => user.id)
       
       #--------------------------------------------------------------
-      ss= StorageSection.new(:user_id=>user.id, :name=>'Основное')
+      ss= StorageSection.new(:user_id=>user.id, :title=>'Основное')
       ss.save!
       #--------------------------------------------------------------
       
@@ -67,7 +67,7 @@ namespace :db do
           :name=>"Модератор",
           :role_id=>Role.find_by_name('page_administrator').id
         )
-        #profile= Factory.create(:empty_profile, :user_id => user.id)
+        profile= Factory.create(:empty_profile, :user_id => user.id)
       end#logins.each
       
     end# db:users:create

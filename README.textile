@@ -1,14 +1,45 @@
 h3. Школьный проект iv-schools.ru
 
+Проект задумывался как школьный портал.
+Вероятно, если привлечь хорошего дизайнера, сделать некоторые доработки движка, то
+проект сможет быть полезен в сфере образования.
+
+h4. Функционирующие элементы
+
+# Список пользователей
+# Поддоменная структура
+# Система редактирования страниц на базе textile разметки
+# Система обратной связи Вопрос/Ответ
+# Система загрузки файлов различных форматов (Файловое хранилище)
+# Система регистрации обновлений на сайте 
+
+h4. Фрагменты другого функционала заложенного в проекте
+
+# Ролевое распределение по схеме Контроллер/Действие (admins/roles)
+# Санитайз (gem sanitize)
+# i18n
+# vendor/plugins/act_as_abonent - самописная ACL/DACL система (nodoc)
+# JQuery элементы
+
 h4. Установка
 
-#ruby -v
+Я, как правило, работаю под виндой, потому инструкция по запуску для win
+
+Вам  потребуются:
+
+# Ruby
+# Rails
+# MySQL
+# MySQL dll - иначе запустить MySQL вряд ли получится
+# ImageMagick (RMagick)
+
+$ruby -v
 >> ruby 1.8.6 (2007-09-24 patchlevel 111) [i386-mswin32]
 
-#gem -v
+$gem -v
 >> 1.3.6
 
-#gem install -v=2.3.4 rails --no-ri --no-rdoc
+$gem install -v=2.3.4 rails --no-ri --no-rdoc
 >> Successfully installed activesupport-2.3.4
 >> Successfully installed activerecord-2.3.4
 >> Successfully installed rack-1.0.1
@@ -18,44 +49,59 @@ h4. Установка
 >> Successfully installed rails-2.3.4
 >> 7 gems installed
 
-#gem install sanitize --no-ri --no-rdoc
+
+_Установим Санитайз - он помогает чистить входящий HTML от нежелательных тегов_
+$gem install sanitize --no-ri --no-rdoc
 >> Successfully installed nokogiri-1.4.3.1-x86-mswin32
 >> Successfully installed sanitize-1.2.1
 
-#gem install haml  --no-ri --no-rdoc
+_Установим HAML - чудесный язык разметки формирующий HTML_
+$gem install haml  --no-ri --no-rdoc
 >> Successfully installed haml-3.0.21
 
-#gem install RedCloth --no-ri --no-rdoc
-Installing ri documentation for RedCloth-4.2.3-x86-mswin32-60
+_Установим RedCloth - позволяет использовать textile разметку при редактировании контента_
+$gem install RedCloth --no-ri --no-rdoc
+>> Successfully installed RedCloth-4.2.3-x86-mswin32-60
 
-#gem list
+_Установить Фэкера (для создания тестовых данных)_
+$gem install faker
 
-*** LOCAL GEMS ***
+_Должно установить Factory Girl (для создания тестовых данных)_
+$rake gems:install
 
-/* Кажется эти гемы основные */
-faker (0.3.1)
-mysql (2.7.3)
-sanitize (1.2.1)
-RedCloth (4.2.3)
-rmagick (2.12.0)
-nokogiri (1.4.3.1)
-haml (3.0.21, 3.0.13)
-hpricot (0.6)
-/* Кажется эти гемы основные */
+_Проверьте, что у вас есть эти (или более свежие) гемы_
+$gem list
 
-#rake db:create:all
+# faker (0.3.1)
+# mysql (2.7.3)
+# sanitize (1.2.1)
+# RedCloth (4.2.3)
+# rmagick (2.12.0)
+# nokogiri (1.4.3.1)
+# haml (3.0.21, 3.0.13)
+# hpricot (0.6)
+
+В Win нужно установить пакет dll и затем запустить установку гема rmagick из локальной папки
 
 #ImageMagick-6.5.6-8-Q8-windows-dll.exe
-#gem install rmagick-2.12.0-x86-mswin32.gem --local
+$gem install rmagick-2.12.0-x86-mswin32.gem <notextile>--local</notextile>
 
-#gem install faker
-#rake gems:install
+Настройте файл *config/database.yml*
 
-#rake db:basic_data
+Далее нужно создать БД и тестовые данные:
+
+_Лучше так_
+$rake db:basic_data
+
+_Но можно и более длинным путем_
+#rake db:create:all
+#rake db:migrate
+#rake db:roles:create
+#rake db:users:create
 #rake db:pages:create
-#ruby script/server
+#rake storage:add
 
-
+Чтобы работали поддомены отредактируйте хост-файл примерно так: 
 ================================================
 C:\Windows\System32\drivers\etc\hosts
 
@@ -67,8 +113,13 @@ C:\Windows\System32\drivers\etc\hosts
 127.0.0.1	portal.iv-schools.info
 ================================================
 
-P.S.:
-Для тестового заполнения данными требуется gem faker
-#script/plugin install git://github.com/collectiveidea/awesome_nested_set.git
+Добавьте другие подразделы по желанию
+
+_Из папки проекта выполните_
+$ruby script/server
+
+В браузере:
+
+http://iv-schools.info:3000
 
 

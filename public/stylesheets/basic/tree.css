@@ -1,0 +1,17 @@
+.tree div{
+  margin-bottom:5px;
+  line-height:150%;
+}
+.tree .root{
+  font-weight:bold;
+}
+.tree .root a{color:#000;}
+.tree .childs{
+  border-left:1px dashed #CCC;
+  margin-top:10px;
+  margin-left:15px;
+}
+.tree .child{
+  margin-left:15px;
+}
+.tree .child a:hover{color:#006;}

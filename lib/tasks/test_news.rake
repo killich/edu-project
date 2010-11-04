@@ -10,11 +10,42 @@ namespace :db do
       users = User.find(:all)
       users.each do |user|
         10.times do
-          user.reports.new(
-            :title=>'test',
-            :description=>'test',
-            :content=>'test'
-          ).save!
+          report = user.reports.new(
+            :title=>Faker::Lorem.sentence(3),
+            :description=>Faker::Lorem.sentence(15),
+            :content=>Faker::Lorem.sentence(30)
+          )
+          report.save!
+          # Сделать дочерних страниц
+          if [true, false].rand
+            (1..8).to_a.rand.times do
+              # Сделать дочернюю новость
+              report_child = user.reports.new(
+                :title=>Faker::Lorem.sentence(3),
+                :description=>Faker::Lorem.sentence(15),
+                :content=>Faker::Lorem.sentence(30)
+              )
+              report_child.save!
+              # Сделать дочернюю, дочерью корневой страницы
+              report_child.move_to_child_of(report)
+              
+              # Сделать дочерних страниц
+              if [true, false].rand
+                (4..12).to_a.rand.times do
+                  # Сделать дочернюю новость
+                  report_child2 = user.reports.new(
+                    :title=>Faker::Lorem.sentence(3),
+                    :description=>Faker::Lorem.sentence(15),
+                    :content=>Faker::Lorem.sentence(30)
+                  )
+                  report_child2.save!
+                  # Сделать дочернюю, дочерью корневой страницы
+                  report_child2.move_to_child_of(report_child)
+                end# 15.times
+              end# if [true, false]
+              
+            end# (1..8).to_a.rand.times
+          end# if [true, false]
         end# 10.times
       end# users.each
     end# rake db:create:test_news

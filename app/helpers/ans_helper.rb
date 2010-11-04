@@ -217,10 +217,10 @@ module AnsHelper
     # ans_show_tree(@pages_tree, :clean=>false, :class_name=>'Page', :idname=>'zip', :localize=>localize)
     #-------------------------------------------------------------------------------------------------------
     def ans_show_tree(tree, options= {})
-      #--------------------------------------------------
+            #--------------------------------------------------
       result= ''
       #--------------------------------------------------
-        opts= {
+      opts= {
         :node=>nil,       # Узел
         :root=>false,     # Флаг корневого элемента
         :clean=>true,     # Следует ли после отрисовки удалять элмент из дерева (для облегчения следующего обхода дерева)
@@ -252,7 +252,8 @@ module AnsHelper
         link_txt= Sanitize.clean(link_txt , SatitizeRules::Config::TITLE)
         link_txt = 'Имя не определено' if link_txt.blank?
         
-        res= content_tag :li, link_to(link_txt, link_path, :title=>opts[:localize][:id_of_element] + opts[:node].send(opts[:idname]).to_s), :class=>(opts[:root] ? 'root' : '')
+        title_txt = opts[:localize][:id_of_element].to_s + opts[:node].send(opts[:idname]).to_s
+        res= content_tag(:div, link_to(link_txt, link_path, :title=>title_txt), :class=>(opts[:root] ? 'root' : 'child'))
         # Выбираем дочерние узлы к данному
         childs= tree.select{|elem| elem.parent_id == opts[:node].id}
         # Удаляем узел из дерева, при следующей рекурсии придется обходить меньше элементов =)
@@ -260,8 +261,9 @@ module AnsHelper
         # Делаем все тоже самое для дочерних. Отрисуем дочерний элемент, и все дочерние
         childs.each {|elem| child_res << ans_show_tree(tree, opts.merge!({:node=>elem, :root=>false}))}
         # Если есть дочерние - обернем их
-        child_res= child_res.blank? ? '' : (content_tag :li, (content_tag :ul, child_res))
+        child_res= child_res.blank? ? '' : content_tag(:div, child_res, :class=>:childs)
         # Формируем результат
+        
         result<<(res + child_res)
       end #unless node
       #--------------------------------------------------

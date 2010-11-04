@@ -1,12 +1,12 @@
-class ReportsController < ApplicationController
+class ReportsController < ApplicationController  
   # GET /reports
   def index
     @reports = @user.reports.paginate(:all,
                                        :order=>"created_at ASC", #ASC, DESC
-                                       :select=>'title, zip, parent_id, updated_at',
+                                       :select=>'id, title, zip, parent_id, updated_at',
                                        :order=>"lft ASC",
                                        :page => params[:page],
-                                       :per_page=>2
+                                       :per_page=>45
                                      )
     respond_to do |format|
       format.html # index.haml

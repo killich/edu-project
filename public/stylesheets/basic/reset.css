@@ -14,3 +14,4 @@ sup{vertical-align:40%;}
 sub{vertical-align:-40%;}
 .overblock{overflow:hidden; zoom:1;}
 .nobr{white-space:nowrap;}
+:focus{outline: 0;}

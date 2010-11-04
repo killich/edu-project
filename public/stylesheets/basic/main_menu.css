@@ -1,0 +1,43 @@
+.main_menu{
+  border:0px solid red;
+}
+.main_menu li{
+  overflow:hidden;
+  zoom:1;
+}
+.main_menu li a{
+  display:block;
+  float:left;
+  width:120px;
+  height:120px;
+  border:3px solid #DDD;
+  margin-right:20px;
+  margin-bottom:20px;
+  text-align:center;
+  text-decoration:none;
+}
+.main_menu li a:hover{
+  border:3px solid #008;
+  color:#008;
+  text-decoration:none;
+}
+.main_menu li a.news{background:transparent url(/images/profile_incons/news.jpg) no-repeat scroll 10px 5px;}
+.main_menu li a.news:hover{background-image:url(/images/profile_incons/_news.jpg);}
+
+.main_menu li a.pages{background:transparent url(/images/profile_incons/pages.jpg) no-repeat scroll 5px 5px;}
+.main_menu li a.pages:hover{background-image:url(/images/profile_incons/_pages.jpg);}
+
+.main_menu li a.files{background:transparent url(/images/profile_incons/files.jpg) no-repeat scroll 5px 5px;}
+.main_menu li a.files:hover{background-image:url(/images/profile_incons/_files.jpg);}
+
+.main_menu li a.questions{background:transparent url(/images/profile_incons/questions.jpg) no-repeat scroll 5px 5px;}
+.main_menu li a.questions:hover{background-image:url(/images/profile_incons/_questions.jpg);}
+
+.main_menu li a.settings{background:transparent url(/images/profile_incons/settings.jpg) no-repeat scroll 5px 5px;}
+.main_menu li a.settings:hover{background-image:url(/images/profile_incons/_settings.jpg);}
+
+.main_menu li a.roles{background:transparent url(/images/profile_incons/roles.jpg) no-repeat scroll 5px 5px;}
+.main_menu li a.roles:hover{background-image:url(/images/profile_incons/_roles.jpg);}
+
+.main_menu li a.mail{background:transparent url(/images/profile_incons/mail.jpg) no-repeat scroll 5px 5px;}
+.main_menu li a.mail:hover{background-image:url(/images/profile_incons/_mail.jpg);}

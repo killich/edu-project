@@ -18,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :storage_sections
   map.resources :storage_files
+  
+  map.resources :news, :controller => 'reports'
               
   map.resources :questions,
     :collection=>{ :box=>:get },
@@ -70,47 +72,3 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
-
-=begin
-  Отказываюсь от адресации через users
-  Систему разрабатываю только через поддомены
-  Поскольку дополнительная адресация это конечно хорошо,
-  Но организовывать пернаправления в случае не корректного адреса не просто
-  http:// login1.site.com/users/login2/albums/login1-album_id/images/2 ==>redirect_to==>http:// login1.site.com/users/login1/albums/login1-album_id/images/2
-  
-  Вариант адресации не через домены возможен, но на данный момент не рассматривается,
-  т.к. усложняет систему
-  
-  http:// login1.site.com/albums/login1-album_id/images/2
-  
-  #------------------------------------------------------------------------------------#
-  #- Парная связка, которая должна вести к одним и тем же обработчикам
-  #- Первый фрагмент - через идентификатор пользователя
-  #- Второй фрагмент - напрямую через поддомен или объект текущего пользователя
-  #------------------------------------------------------------------------------------#
-  # Доступ через пользователя
-  map.resources :users do |user|
-    user.resources :pages
-  end#users
-  
-  # Стандартный роутинг для страниц
-
-  map.resources :users do |user|
-    user.resources :albums do |album|   #/users/:user_id/albums, /users/:user_id/albums/new
-      album.resources :images,
-        :member=>{ :need_id=>:get },    #/users/:user_id/albums/:album_id/images/:id/need_ids
-        :collection=>{ :no_ids=>:get }  #/users/:user_id/albums/:album_id/images/no_ids
-    end #:albums
-  end #:users
-
-  # Доступ напрямую через поддомен
-  map.resources :albums do |album|   #/albums, /albums/new
-    album.resources :images,
-      :member=>{     :need_id=>:get },    #/albums/:album_id/images/:id/need_ids
-      :collection=>{ :no_ids=>:get }  #/albums/:album_id/images/no_ids
-  end #:albums
-=end
-  
-#------------------------------------------------------------------------------------#
-#------------------------------------------------------------------------------------#
-#------------------------------------------------------------------------------------#

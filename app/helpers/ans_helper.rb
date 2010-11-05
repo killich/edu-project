@@ -46,29 +46,39 @@ module AnsHelper
       opts[:localize][:delete_confirm]=               (opts[:localize][:delete_confirm])                ? (opts[:localize][:delete_confirm])                : 'delete confirm.'
       opts[:localize][:sub_sections_must_be_deleted]= (opts[:localize][:sub_sections_must_be_deleted])  ? (opts[:localize][:sub_sections_must_be_deleted])  : 'sub-sections must be deleted.'
       #--------------------------------------------------
+      # Если не указан класс элементов - то определим его по первому элементу дерева (для формирования ссылок)
+      opts[:class_name]= opts[:class_name] ? opts[:class_name].to_s.downcase : elem.class.to_s.downcase
+      #--------------------------------------------------
       # Если первый элемент - то, ссылку вверх не генерируем
       if opts[:first]
         up = link_to '', '#',:title=>opts[:localize][:cant_be_moved], :class=>'button cantup'
       else
-        up = link_to '', up_page_path(elem.zip), :title=>opts[:localize][:move_up]+"#{elem.title}", :class=>'button up'
+        # Формируем путь ссылки
+        # up_#{news}_path(elem.send(opts[:idname]).to_s) ==> up_news_path(elem.zip) ==> up_news_path('N1234')
+        link_path= eval("up_#{opts[:class_name]}_path(elem.send(opts[:idname]).to_s)")
+        up = link_to '', link_path, :title=>opts[:localize][:move_up]+"#{elem.title}", :class=>'button up'
       end
       #--------------------------------------------------
       # Если последний элемент - то, ссылку вниз не генерируем
       if opts[:last]
         down=   link_to '', '#', :title=>opts[:localize][:cant_be_moved], :class=>'button cantdown'
       else
-        down=   link_to '', down_page_path(elem.zip), :title=>opts[:localize][:move_down] + "#{elem.title}", :class=>'button down'
+        link_path= eval("down_#{opts[:class_name]}_path(elem.send(opts[:idname]).to_s)")
+        down=   link_to '', link_path, :title=>opts[:localize][:move_down] + "#{elem.title}", :class=>'button down'
       end
       #--------------------------------------------------
-      edit=   link_to '', edit_page_path(elem.zip), :title=>opts[:localize][:edit] + "#{elem.title}", :class=>'button edit'
+      link_path= eval("edit_#{opts[:class_name]}_path(elem.send(opts[:idname]).to_s)")
+      edit=   link_to '', link_path, :title=>opts[:localize][:edit] + "#{elem.title}", :class=>'button edit'
       new= ''
       if opts[:childs_add]
-        new= link_to '', new_page_path(:parent_id=>elem.zip), :title=>opts[:localize][:create_child] + "#{elem.title}", :class=>'button new'
+        link_path= eval("new_#{opts[:class_name]}_path(:parent_id=>elem.send(opts[:idname]).to_s)")
+        new= link_to '', link_path, :title=>opts[:localize][:create_child] + "#{elem.title}", :class=>'button new'
       end
       #--------------------------------------------------
       # Если дочерние элементы отсутствуют
       if opts[:childs]
-        delete=  link_to('', page_path(elem.zip), :method=>:delete, :title=>opts[:localize][:delete] + "#{elem.title}", :confirm=>opts[:localize][:delete_confirm], :class=>'button delete') 
+        link_path= eval("#{opts[:class_name]}_path(elem.send(opts[:idname]).to_s)")
+        delete=  link_to('', link_path, :method=>:delete, :title=>opts[:localize][:delete] + "#{elem.title}", :confirm=>opts[:localize][:delete_confirm], :class=>'button delete') 
       else
         delete=  link_to('', '#',  :title=>opts[:localize][:sub_sections_must_be_deleted], :class=>'button undeleted', :onclick=>"javascript:alert('#{opts[:localize][:sub_sections_must_be_deleted]}');return false;")
       end
@@ -125,7 +135,7 @@ module AnsHelper
       node= opts[:node]
       root= opts[:root]
       
-      opts[:localize][:id_of_element]= (opts[:localize][:id_of_element]) ? (opts[:localize][:id_of_element]) : 'Id of element'
+      opts[:localize][:id_of_element]= (opts[:localize][:id_of_element]) ? (opts[:localize][:id_of_element]) : 'Id of element: '
       #--------------------------------------------------
       # Если дерево пустое - то и нечего его рисовать
       return '' if tree.empty?

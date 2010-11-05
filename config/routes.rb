@@ -19,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :storage_sections
   map.resources :storage_files
   
-  map.resources :news, :controller => 'reports'
+  map.resources :news, :controller => 'reports',
+    :member=>{ :up=>:get, :down=>:get }
               
   map.resources :questions,
     :collection=>{ :box=>:get },

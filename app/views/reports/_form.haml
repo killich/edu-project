@@ -1,16 +1,31 @@
-%label{:for=>:title}
-  Заголовок
-%span
+%h5.gray
   = f.text_field :title, :class=>:input
-  
-%label{:for=>:description}
-  Описание
-%span
-  = f.text_field :description, :class=>:input
-  
-%label{:for=>:content}
-  Содержимое
-%span
-  = f.text_area :content, :class=>:textarea_mid
+  = "&laquo; " + title
+%fieldset  
+  .view_buttons.overblock
+    =link_to_function "Разметка", "show_markup()", :class=>:show_markup
+    =link_to_function "Предпросмотр", "show_html()", :class=>:show_html
+    =link_to_function "Инструкция", "show_markup_help()", :class=>:show_markup_manual
 
-= submit_tag button, :class=>:submit
+  #markup_preview_block
+    %h5.gray{:style=>'background:#EEFFEE; border:2px solid #66BB66; color:#000; padding:5px;'}
+      РАЗМЕТКА (см. Инструкцию)
+    %span
+      = f.text_area :content, :class=>:textarea_work
+    .button_block
+      = submit_tag button, :class=>:submit
+        
+  #html_preview_block{:style=>'display:none'}
+    %h5.gray{:style=>'background:#87B3FF; border:2px solid #4472BF; color:#FFF; padding:5px;'}
+      ПРЕДПРОСМОТР
+    #html_preview
+      &nbsp;
+    %h5.gray
+      =button
+    .button_block
+      = submit_tag button, :class=>:submit
+      
+  #markup_help_block{:style=>'display:none'}
+    %h5.gray{:style=>'background:#A084FB; border:2px solid #3F09F4; color:#FFF; padding:5px;'}
+      ИНСТРУКЦИЯ
+    =render :partial => 'pages/markup_help'

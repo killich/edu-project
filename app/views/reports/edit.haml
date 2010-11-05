@@ -1,11 +1,13 @@
+- content_for :js do
+  =javascript_include_tag "editor/editor"
 - content_for :css do
   =stylesheet_link_tag 'basic/edit_form.css', :media=>'screen'
+  =stylesheet_link_tag 'basic/page_preview.css', :media=>'screen'
  
 = object_errors(@report)
 
-.edit_form
+.edit_form.overblock
   %h5
-    Редактирование Новости
-     
+    Редактирование Новости 
   -form_for(@report) do |f|
-    =render :partial => 'form', :locals => {:f => f, :button=>'Обновить'}
+    =render :partial => 'form', :locals => {:f => f, :button=>'Обновить', :title=>'Редактировать новость'}

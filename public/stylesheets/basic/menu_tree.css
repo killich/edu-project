@@ -1,27 +1,20 @@
-ul.menu_tree{
-	padding:0 10px 10px 10px;
-	width:205px;
-    overflow:hidden;
-    zoom:1;
-    border-right:1px solid #CCC;
-    /*background:#FFF url(/images/basic/23.jpg) no-repeat 50% 0;*/
+.menu_tree {
+  overflow:hidden;
+  zoom:1;
+  float:left;
+  margin:0;
+  padding:0 10px 10px 10px;
+  width:205px;
+  border-right:1px solid #CCC;
+  /*background:#FFF url(/images/basic/23.jpg) no-repeat 50% 0;*/
 }
-ul.menu_tree li.root a{
+.menu_tree .root a{
 	font-weight:bold;
 }
-ul.menu_tree li{
-    padding:0;
-    float:left;
-    width:100%;
-    overflow:hidden;
-    zoom:1;
-    margin:0 0 4px 0;
+.menu_tree .childs{
+  margin-left:15px;
 }
-ul.menu_tree ul{
-    margin:0;
-	padding-left:15px;
-}
-ul.menu_tree li a{
+.menu_tree  a{
 	font-size:8pt;
 	font-family:Tahoma;
 	text-decoration:none;
@@ -30,9 +23,8 @@ ul.menu_tree li a{
 	display:block;
 	line-height:150%;
 }
-ul.menu_tree li a:hover{
+.menu_tree  a:hover{
 	background:transparent url(/images/basic/pointer_hover.gif) no-repeat scroll 0 6px;
-	text-decoration:underline;
+	text-decoration:underne;
 	color:#FF3F23;
 }
-ul.menu_tree li > ul li > ul li > ul li{margin:0;}
